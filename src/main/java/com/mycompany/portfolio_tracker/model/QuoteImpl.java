@@ -21,7 +21,7 @@ import com.mycompany.portfolio_tracker.exceptions.WebsiteDataException;
  * @date 31/10/2005.
  * @version 1.2
  */
-public class QuoteImpl {
+public class QuoteImpl implements Quote {
 
 	/**
 	 * Quote is a utility class that allows calling code to retrieve the latest
@@ -48,7 +48,7 @@ public class QuoteImpl {
 	 */
 	public QuoteImpl(boolean useProxy) {
 		_useProxy = useProxy;
-	}// end of default constructor
+	}
 
 	/**
 	 * This method gets the web page containing the share price information and
@@ -62,6 +62,11 @@ public class QuoteImpl {
 	 * @requires: tickerSymbol != null || tickerSymbol != ""
 	 * 
 	 */
+	/*
+	 * (non-Javadoc)
+	 * @see com.mycompany.portfolio_tracker.model.Quote#setValues(java.lang.String)
+	 */
+	@Override
 	public void setValues(String tickerSymbol) throws IOException,
 			WebsiteDataException, NoSuchTickerException, MethodException {
 
@@ -114,9 +119,9 @@ public class QuoteImpl {
 			// since the latest value on a non-existent will always be zero
 			if (_shareDataList.get(2).equalsIgnoreCase("0.00"))
 				throw new NoSuchTickerException("No Such Ticker");
-		}//end if else
+		}
 
-	}// end of getLastValue
+	}
 		
 	public String getStockName() throws MethodException {
 		return ensureNotNull(_shareDataList.get(0)) ? _shareDataList.get(0):null;
@@ -130,9 +135,14 @@ public class QuoteImpl {
 	 * @throws MethodException
 	 * 
 	 */
+	/*
+	 * (non-Javadoc)
+	 * @see com.mycompany.portfolio_tracker.model.Quote#getTicker()
+	 */
+	@Override
 	public String getTicker() throws MethodException {
 		return ensureNotNull(_shareDataList.get(1)) ? _shareDataList.get(1):null;
-	}// end of getTicker
+	}
 
 	/**
 	 * This method returns the latest stock price
@@ -143,9 +153,14 @@ public class QuoteImpl {
 	 * @throws MethodException
 	 * 
 	 */
+	/*
+	 * (non-Javadoc)
+	 * @see com.mycompany.portfolio_tracker.model.Quote#getLatest()
+	 */
+	@Override
 	public Double getLatest() throws MethodException {
 		return ensureNotNull(_shareDataList.get(2)) ? Double.valueOf(_shareDataList.get(2)):null;
-	}// end of getLatest
+	}
 
 	/**
 	 * This method returns the date of the share values in format mm/dd/yy
@@ -156,9 +171,14 @@ public class QuoteImpl {
 	 * @throws MethodException
 	 * 
 	 */
+	/*
+	 * (non-Javadoc)
+	 * @see com.mycompany.portfolio_tracker.model.Quote#getDate()
+	 */
+	@Override
 	public String getDate() throws MethodException {
 		return ensureNotNull(_shareDataList.get(3)) ? _shareDataList.get(3):null;
-	}// end of getDate
+	}
 
 	/**
 	 * This method returns the time of the latest share transactions in format HH:MM:AM/PM
@@ -169,9 +189,14 @@ public class QuoteImpl {
 	 * @throws MethodException
 	 * 
 	 */
+	/*
+	 * (non-Javadoc)
+	 * @see com.mycompany.portfolio_tracker.model.Quote#getTime()
+	 */
+	@Override
 	public String getTime() throws MethodException {
 		return ensureNotNull(_shareDataList.get(4)) ? _shareDataList.get(4):null;
-	}// end of getTime
+	}
 
 	/**
 	 * This method returns the change value of the share, if the share value has
@@ -184,9 +209,14 @@ public class QuoteImpl {
 	 * @throws MethodException
 	 * 
 	 */
+	/*
+	 * (non-Javadoc)
+	 * @see com.mycompany.portfolio_tracker.model.Quote#getChange()
+	 */
+	@Override
 	public Double getChange() throws MethodException {
 		return ensureNotNull(_shareDataList.get(5)) ? Double.valueOf(_shareDataList.get(5)):null;
-	}// end of getChange
+	}
 
 	/**
 	 * This method returns the days opening share prive
@@ -197,9 +227,14 @@ public class QuoteImpl {
 	 * @throws MethodException
 	 * 
 	 */
+	/*
+	 * (non-Javadoc)
+	 * @see com.mycompany.portfolio_tracker.model.Quote#getOpen()
+	 */
+	@Override
 	public Double getOpen() throws MethodException {
 		return ensureNotNull(_shareDataList.get(6)) ? Double.valueOf(_shareDataList.get(6)):null;
-	}// end of getOpen
+	}
 	
 	/**
 	 * This method returns the days range maximum value
@@ -210,9 +245,14 @@ public class QuoteImpl {
 	 * @throws MethodException
 	 * 
 	 */
+	/*
+	 * (non-Javadoc)
+	 * @see com.mycompany.portfolio_tracker.model.Quote#getRangeMax()
+	 */
+	@Override
 	public Double getRangeMax() throws MethodException {
 		return ensureNotNull(_shareDataList.get(7)) ? Double.valueOf(_shareDataList.get(7)):null;
-	}// end of getRangeMax
+	}
 
 	/**
 	 * This method returns the days range minimum value
@@ -223,9 +263,14 @@ public class QuoteImpl {
 	 * @throws MethodException
 	 * 
 	 */
+	/*
+	 * (non-Javadoc)
+	 * @see com.mycompany.portfolio_tracker.model.Quote#getRangeMin()
+	 */
+	@Override
 	public Double getRangeMin() throws MethodException {
 		return ensureNotNull(_shareDataList.get(8)) ? Double.valueOf(_shareDataList.get(8)):null;
-	}// end of getRangeMin
+	}
 
 	/**
 	 * This method returns the voulme of shares available
@@ -236,18 +281,26 @@ public class QuoteImpl {
 	 * @throws MethodException
 	 * 
 	 */
+	/*
+	 * (non-Javadoc)
+	 * @see com.mycompany.portfolio_tracker.model.Quote#getVolume()
+	 */
+	@Override
 	public Double getVolume() throws MethodException {
 			return ensureNotNull(_shareDataList.get(9)) ? Double.valueOf(_shareDataList.get(9)):null;
-	}// end of getVolume
+	}
 
 	// -------------------- Private Methods  --------------------
 	
+	/*
+	 * 
+	 */
 	private boolean ensureNotNull(String str) throws MethodException{
 		if(str == null)
 			throw new MethodException(str);
 		else
 			return true;
-	}//:end ensureNotNull
+	}
 
 	/**
 	 * Method removePunc: removes all characters we dont't want in our string
@@ -271,8 +324,7 @@ public class QuoteImpl {
 
 		// Strip out the characters we don't want namely " and +
 		return Pattern.compile("[\"]").matcher(str).replaceAll("");
-	}// end of removePunc
-
+	}
 
 }
 

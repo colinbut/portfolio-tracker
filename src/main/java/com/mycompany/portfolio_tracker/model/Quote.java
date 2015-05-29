@@ -29,7 +29,7 @@ public interface Quote {
 	 * @requires: tickerSymbol != null || tickerSymbol != ""
 	 * 
 	 */
-	public void setValues(String tickerSymbol) throws IOException, WebsiteDataException, NoSuchTickerException, MethodException;
+	void setValues(String tickerSymbol) throws IOException, WebsiteDataException, NoSuchTickerException, MethodException;
 
 	/**
 	 * This method returns the value of the ticker
@@ -40,7 +40,7 @@ public interface Quote {
 	 * @throws MethodException
 	 * 
 	 */
-	public String getTicker() throws MethodException;
+	String getTicker() throws MethodException;
 
 	/**
 	 * This method returns the latest stock price
@@ -51,7 +51,7 @@ public interface Quote {
 	 * @throws MethodException
 	 * 
 	 */
-	public Double getLatest() throws MethodException;
+	Double getLatest() throws MethodException;
 
 	/**
 	 * This method returns the date of the share values in format mm/dd/yy
@@ -62,7 +62,7 @@ public interface Quote {
 	 * @throws MethodException
 	 * 
 	 */
-	public String getDate() throws MethodException;
+	String getDate() throws MethodException;
 
 	/**
 	 * This Double returns the time of the latest share transactions in format HH:MM:AM/PM
@@ -73,7 +73,7 @@ public interface Quote {
 	 * @throws MethodException
 	 * 
 	 */
-	public String getTime() throws MethodException ;
+	String getTime() throws MethodException ;
 
 	/**
 	 * This method returns the change value of the share, if the share value has
@@ -86,7 +86,7 @@ public interface Quote {
 	 * @throws MethodException
 	 * 
 	 */
-	public Double getChange() throws MethodException ;
+	Double getChange() throws MethodException ;
 
 	/**
 	 * This method returns the days opening share prive
@@ -97,7 +97,7 @@ public interface Quote {
 	 * @throws MethodException
 	 * 
 	 */
-	public Double getOpen() throws MethodException;
+	Double getOpen() throws MethodException;
 	
 	/**
 	 * This method returns the days range maximum value
@@ -108,7 +108,7 @@ public interface Quote {
 	 * @throws MethodException
 	 * 
 	 */
-	public Double getRangeMax() throws MethodException ;
+	Double getRangeMax() throws MethodException ;
 
 	/**
 	 * This method returns the days range minimum value
@@ -119,7 +119,7 @@ public interface Quote {
 	 * @throws MethodException
 	 * 
 	 */
-	public Double getRangeMin() throws MethodException;
+	Double getRangeMin() throws MethodException;
 
 	/**
 	 * This method returns the volume of shares available
@@ -130,6 +130,6 @@ public interface Quote {
 	 * @throws MethodException
 	 * 
 	 */
-	public Double getVolume() throws MethodException;
+	Double getVolume() throws MethodException;
 	
 }

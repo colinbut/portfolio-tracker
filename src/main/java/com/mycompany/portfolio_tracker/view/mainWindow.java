@@ -6,8 +6,9 @@ import javax.swing.event.ChangeListener;
 import javax.swing.table.*;
 
 import com.mycompany.portfolio_tracker.controller.EventController;
-import com.mycompany.portfolio_tracker.controller.EventController.MenuListeners;
+import com.mycompany.portfolio_tracker.controller.MenuController;
 import com.mycompany.portfolio_tracker.model.PortfolioImpl;
+import com.mycompany.portfolio_tracker.model.Stock;
 import com.mycompany.portfolio_tracker.model.StockImpl;
 
 import java.awt.*;
@@ -39,10 +40,10 @@ public class mainWindow extends JFrame implements Runnable {
 	    private boolean start = true;
 	    private DecimalFormat decimal;
 	    private EventController listener = new EventController(this, portfolio);
-	    private EventController.MenuListeners menuListener = listener.new MenuListeners(this);
+	    private MenuController menuListener = new MenuController(this);
 	    
 	    
-	    /*
+	    /**
 	     * Constructor
 	     */
 	    public mainWindow() {
@@ -250,7 +251,7 @@ public class mainWindow extends JFrame implements Runnable {
 	    	
 	    	TableView tableView = (TableView)jTabbedPane1.getSelectedComponent();
 	    	portfolio = tableView.getPortfolio();
-	    	StockImpl stock = portfolio.getStock(ticker);
+	    	Stock stock = portfolio.getStock(ticker);
 	    	String tickerSymbol = stock.getTickerSymbol();
 	    	String stockName = stock.getStockName();
 	    	String numberOfShares = Integer.toString(stock.getNumberOfShares());
@@ -274,7 +275,7 @@ public class mainWindow extends JFrame implements Runnable {
 	     */
 	    public void AddRow2(String ticker, PortfolioImpl portfolio){
 	        this.portfolio = portfolio;
-	    	StockImpl stock = portfolio.getStock(ticker);
+	    	Stock stock = portfolio.getStock(ticker);
 	    	String tickerSymbol = stock.getTickerSymbol();
 	    	String stockName = stock.getStockName();
 	    	String numberOfShares = Integer.toString(stock.getNumberOfShares());
@@ -325,7 +326,7 @@ public class mainWindow extends JFrame implements Runnable {
 	     * Updates all data in this tab
 	     */
 	    public void updateTab(int row, TableView tableView, String ticker){
-	    	StockImpl stock = tableView.getPortfolio().getStock(ticker);
+	    	Stock stock = tableView.getPortfolio().getStock(ticker);
 	    	//double sharePrice = stock.getCurrentPrice();
 	    	double change = stock.getChange();
 	    	double holdingValue = stock.getHoldingValue();

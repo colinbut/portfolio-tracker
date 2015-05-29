@@ -30,10 +30,6 @@ public class DeleteWindow extends JFrame {
     private String tickerSymbol;
    
     
-    /** Creates new form DeleteWindow */
-    /*
-     * Constructor
-     */
     public DeleteWindow(mainWindow m, mainWindow.TableView tableView, int t,Object s) {
         initComponents();
         this.gui = m;

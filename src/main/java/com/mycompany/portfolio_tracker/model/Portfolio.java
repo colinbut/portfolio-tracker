@@ -1,17 +1,66 @@
 package com.mycompany.portfolio_tracker.model;
 
 import java.util.Collection;
+import java.util.List;
 
-
+/**
+ * 
+ * @author colin
+ *
+ */
 public interface Portfolio {
 
-	public void addStock(StockImpl stock);
-	public void calculateTotal();
-	public int getTotalValue();
-	public void removeStock(String ticker);
-	public void removeAllStock();
-	public StockImpl getStock(String ticker);
-	public Collection<StockImpl> getAllStocks();
-	public String getPortfolioName();
-	public void setPortfolioName(String s);
+	/**
+	 * 
+	 * @param stock
+	 */
+	void addStock(StockImpl stock);
+	
+	/**
+	 * 
+	 */
+	void calculateTotal();
+	
+	/**
+	 * 
+	 * @return
+	 */
+	int getTotalValue();
+	
+	/**
+	 * 
+	 * @param ticker
+	 */
+	void removeStock(String ticker);
+	
+	/**
+	 * 
+	 */
+	void removeAllStock();
+	
+	/**
+	 * 
+	 * 
+	 * @param ticker
+	 * @return
+	 */
+	Stock getStock(String ticker);
+	
+	/**
+	 * 
+	 * @return
+	 */
+	List<Stock> getAllStocks();
+	
+	/**
+	 * 
+	 * @return
+	 */
+	String getPortfolioName();
+	
+	/**
+	 * 
+	 * @param s
+	 */
+	void setPortfolioName(String s);
 }

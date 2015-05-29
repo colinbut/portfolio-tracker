@@ -9,7 +9,7 @@ public class NoSuchTickerException extends Exception{
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Default constructor
+	 * Constructor
 	 * 
 	 * @param s the exception to be thrown.
 	 */
@@ -17,6 +17,9 @@ public class NoSuchTickerException extends Exception{
 		super(s);		
 	}
 	
+	/**
+	 * Default constructor
+	 */
 	public NoSuchTickerException() {
 		super("No such Ticker");
 	}

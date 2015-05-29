@@ -96,21 +96,22 @@ public class AddWindow extends JFrame {
         getContentPane().add(south, BorderLayout.SOUTH);
 
         pack();
-    }// end initComponents
-
+    }
 
     //------------------------METHODS to get data from this GUI window-----------------------
     
-    /*
+    /**
      * 
+     * @return
      */
     public String getTicker(){
     	String ticker = tickerTextField.getText();
     	return ticker;
     }
     
-    /*
+    /**
      * 
+     * @return
      */
     public String getNumberOfShares(){
     	String numberOfShares = numberOfSharesTextField.getText();
@@ -120,7 +121,7 @@ public class AddWindow extends JFrame {
         
     //------------------------METHODS to UPDATE GUI!! ----------------------------
     
-    /*
+    /**
      * 
      */
     public void makeWindowVisible(){

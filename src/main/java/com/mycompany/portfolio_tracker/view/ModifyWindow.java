@@ -20,7 +20,7 @@ import com.mycompany.portfolio_tracker.exceptions.NoSuchTickerException;
 import com.mycompany.portfolio_tracker.exceptions.WebsiteDataException;
 import com.mycompany.portfolio_tracker.model.PortfolioImpl;
 import com.mycompany.portfolio_tracker.model.QuoteImpl;
-import com.mycompany.portfolio_tracker.model.StockImpl;
+import com.mycompany.portfolio_tracker.model.Stock;
 
 import java.awt.event.*;
 import java.io.IOException;
@@ -48,8 +48,7 @@ public class ModifyWindow extends JFrame {
     private mainWindow.TableView ft;
     private QuoteImpl quote;
         
-    /** Creates new form ModifiyWindow */
-    /*
+    /**
      * Constructor
      */
     public ModifyWindow(mainWindow m, mainWindow.TableView ft, String ticker) {
@@ -78,7 +77,7 @@ public class ModifyWindow extends JFrame {
         ok.addActionListener(new ActionListener(){
         	public void actionPerformed(ActionEvent evt){
         		//update model
-        		StockImpl selectedStock = p.getStock(tickerSymbol);
+        		Stock selectedStock = p.getStock(tickerSymbol);
         		double volume = Double.parseDouble(getInputFromModify());
         		try {
         			try {
