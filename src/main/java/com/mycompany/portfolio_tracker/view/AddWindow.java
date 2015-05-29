@@ -2,16 +2,11 @@ package com.mycompany.portfolio_tracker.view;
 
 import javax.swing.*;
 
-import com.mycompany.portfolio_tracker.exceptions.MethodException;
-import com.mycompany.portfolio_tracker.exceptions.NoSuchTickerException;
-import com.mycompany.portfolio_tracker.exceptions.WebsiteDataException;
-import com.mycompany.portfolio_tracker.model.PortfolioImpl;
-import com.mycompany.portfolio_tracker.model.QuoteImpl;
-import com.mycompany.portfolio_tracker.model.StockImpl;
+import com.mycompany.portfolio_tracker.controller.AddController;
+import com.mycompany.portfolio_tracker.model.Portfolio;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.io.IOException;
 
 /**
  *
@@ -26,18 +21,14 @@ public class AddWindow extends JFrame {
     public JTextField numberOfSharesTextField;
     private JButton ok;
     private JButton cancel;
-    private QuoteImpl quote; 
-    private PortfolioImpl p;
-    private mainWindow gui;
+    private AddController addController;
     
     /**
      * Constructor
      */
-    public AddWindow(mainWindow gui, PortfolioImpl p) {
+    public AddWindow(MainWindow gui, Portfolio portfolio) {
         initComponents();
-        this.gui = gui;
-        this.p = p;
-        quote = new QuoteImpl(true);
+        addController = new AddController(gui, portfolio, this);
     }
     
     /*
@@ -50,11 +41,7 @@ public class AddWindow extends JFrame {
         numberOfSharesTextField = new JTextField();
         
         ok = new JButton("OK");
-        ok.addActionListener(new ActionListener(){
-       	    public void actionPerformed(ActionEvent evt){
-       	    	readUpdateModelGUI();
-        	}
-        });
+        ok.addActionListener(addController);
         
         cancel = new JButton("Cancel");
         cancel.addActionListener(new ActionListener(){
@@ -105,8 +92,7 @@ public class AddWindow extends JFrame {
      * @return
      */
     public String getTicker(){
-    	String ticker = tickerTextField.getText();
-    	return ticker;
+    	return tickerTextField.getText();
     }
     
     /**
@@ -114,8 +100,7 @@ public class AddWindow extends JFrame {
      * @return
      */
     public String getNumberOfShares(){
-    	String numberOfShares = numberOfSharesTextField.getText();
-    	return numberOfShares;
+    	return numberOfSharesTextField.getText();
     }
     
         
@@ -128,67 +113,4 @@ public class AddWindow extends JFrame {
     	setVisible(true);
     }
     
-
-    /*
-     * 
-     */
-    public void readUpdateModelGUI(){
-    	//get input - read from gui
-		String ticker = getTicker();
-		String volumeStr = getNumberOfShares();
-  		double currentPrice = 0;
-		
-		try {
-			quote.setValues(ticker); //set the Ticker to check if it's valid?
-			
-			currentPrice = quote.getLatest(); //If Success then get share price..
-			double change = quote.getChange();
-			String stockName = quote.getStockName();
-			
-			try {
-				double volume = Double.parseDouble(volumeStr);
-			    	if(volume <= quote.getVolume()){
-			    		//UPDATE MODEL
-			    		int shareNo = Integer.parseInt(getNumberOfShares());
-			    		StockImpl stock = new StockImpl(ticker, shareNo,currentPrice ,stockName);//Make Stock object
-		        		stock.setChange(change);
-		        		p.addStock(stock); //ADD to Portfolio (MODEL)
-		        		//Update GUI
-						gui.AddRow(ticker);
-		        	}
-			    	else{
-			    		gui.produceDialogs("Number of shares available exceeded limit");
-			    	}
-			    } 
-			    catch(NumberFormatException e1){
-    			    gui.produceDialogs("Number of shares must be a valid positive number");
-    		    }
-				catch(Exception e){
-					gui.produceDialogs(e.getMessage());
-				}
-				
-		} 
-		catch(IOException e1) {
-			gui.produceDialogs(e1.getMessage());
-		} 
-		
-		catch(WebsiteDataException e1) {
-			gui.produceDialogs(e1.getMessage());
-		} 
-		catch(NoSuchTickerException e1) {
-			gui.produceDialogs(e1.getMessage() +
-					"\n" + "Remember: For UK shares; add .l");
-		} 
-		catch(MethodException e1) {
-			gui.produceDialogs(e1.getMessage());
-		} 
-		catch(Exception e1){
-			gui.produceDialogs("Input Error\n" + "Please check input...\n" +
-					"Remember: For UK shares; add .l");
-   		}
-		    		
-		dispose();
-       }
-
-
 }

@@ -6,6 +6,7 @@ import java.io.*;
 import com.mycompany.portfolio_tracker.exceptions.MethodException;
 import com.mycompany.portfolio_tracker.exceptions.NoSuchTickerException;
 import com.mycompany.portfolio_tracker.exceptions.WebsiteDataException;
+import com.mycompany.portfolio_tracker.model.Portfolio;
 import com.mycompany.portfolio_tracker.model.PortfolioImpl;
 import com.mycompany.portfolio_tracker.model.QuoteImpl;
 import com.mycompany.portfolio_tracker.model.Stock;
@@ -13,7 +14,8 @@ import com.mycompany.portfolio_tracker.model.StockImpl;
 import com.mycompany.portfolio_tracker.view.AddWindow;
 import com.mycompany.portfolio_tracker.view.DeleteWindow;
 import com.mycompany.portfolio_tracker.view.ModifyWindow;
-import com.mycompany.portfolio_tracker.view.mainWindow;
+import com.mycompany.portfolio_tracker.view.MainWindow;
+import com.mycompany.portfolio_tracker.view.components.MyTableView;
 
 /**
  * @author Colin
@@ -26,7 +28,7 @@ public class EventController extends AbstractController implements ActionListene
 	/**
 	 * Constructor
 	 */
-	public EventController(mainWindow gui, PortfolioImpl p){
+	public EventController(MainWindow gui){
 	    this.gui = gui;
 	    quote = new QuoteImpl(true);
 	}
@@ -127,8 +129,8 @@ public class EventController extends AbstractController implements ActionListene
          		    window.makeWindowVisible();
      		    }
      		     else{
-     			//produce error dialogs
-     			gui.producePickDialogs();
+     		    	 //produce error dialogs
+     		    	 gui.producePickDialogs();
      		    }
      		}
 		}
@@ -137,7 +139,7 @@ public class EventController extends AbstractController implements ActionListene
 	/*
 	 * 
 	 */
-	public Object[] readDataFromTable(int row, mainWindow.TableView ft){
+	public Object[] readDataFromTable(int row, MyTableView ft){
 		Object[] ROW = new Object[6];
 		
 		ROW[0] = (String)ft.getTable().getModel().getValueAt(row, 0);
@@ -184,7 +186,7 @@ public class EventController extends AbstractController implements ActionListene
 					}
 	 		    	
 	 		    	//UPDATE MODEL
-					PortfolioImpl portfolio = getCurrentSelectionTable().getPortfolio();
+					Portfolio portfolio = getCurrentSelectionTable().getPortfolio();
 	 		    	String ticker = (String)getCurrentSelectionTable().getTable().getModel().getValueAt(index, 0);
 	 		    	Stock stock = portfolio.getStock(ticker);
 	 		    	stock.setChange(change);

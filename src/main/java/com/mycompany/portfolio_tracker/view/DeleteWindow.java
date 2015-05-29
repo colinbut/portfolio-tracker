@@ -2,7 +2,8 @@ package com.mycompany.portfolio_tracker.view;
 
 import javax.swing.*;
 
-import com.mycompany.portfolio_tracker.model.PortfolioImpl;
+import com.mycompany.portfolio_tracker.controller.DeleteController;
+import com.mycompany.portfolio_tracker.view.components.MyTableView;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -23,20 +24,19 @@ public class DeleteWindow extends JFrame {
     private JLabel testStock1_Label;
     private JLabel jLabel6;
     private JLabel jLabel7;
-    private mainWindow gui;
-    private mainWindow.TableView tableView;
-    private int t;
-    private PortfolioImpl portfolio;
-    private String tickerSymbol;
+    private DeleteController deleteController;
    
-    
-    public DeleteWindow(mainWindow m, mainWindow.TableView tableView, int t,Object s) {
+    /**
+     * Constructor
+     * 
+     * @param gui
+     * @param tableView
+     * @param rowNumber
+     * @param tickerSymbol
+     */
+    public DeleteWindow(MainWindow gui, MyTableView tableView, int rowNumber,Object tickerSymbol) {
         initComponents();
-        this.gui = m;
-        this.tableView = tableView;
-        this.t = t;
-        portfolio = tableView.getPortfolio();
-        tickerSymbol = (String)s;
+        deleteController = new DeleteController(gui, tableView, (String)tickerSymbol, rowNumber, this);
     }
     
     /*
@@ -51,15 +51,7 @@ public class DeleteWindow extends JFrame {
         jLabel7 = new JLabel();
         delete = new JLabel("DELETE: ARE YOU SURE?");
         yes = new JButton("Yes");
-        yes.addActionListener(new ActionListener(){
-        	public void actionPerformed(ActionEvent evt){
-        		//UPDATE MODEL 
-        		portfolio.removeStock(tickerSymbol);
-        		//Update GUI
-        		gui.deleteRow(tableView, t);
-        		dispose();
-        	}
-        });
+        yes.addActionListener(deleteController);
         
         no = new JButton("No");
         no.addActionListener(new ActionListener(){
@@ -126,8 +118,9 @@ public class DeleteWindow extends JFrame {
     	jLabel7.setText(ch + " ( total value " + hv + " )");
     }
     
-    /*
+    /**
      * 
+     * @param sn
      */
     public void setTestStockLabel(String sn){
     	 testStock1_Label.setText(sn);

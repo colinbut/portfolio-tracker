@@ -4,7 +4,8 @@
 package com.mycompany.portfolio_tracker.controller;
 
 import com.mycompany.portfolio_tracker.model.QuoteImpl;
-import com.mycompany.portfolio_tracker.view.mainWindow;
+import com.mycompany.portfolio_tracker.view.MainWindow;
+import com.mycompany.portfolio_tracker.view.components.MyTableView;
 
 /**
  * @author colin
@@ -12,12 +13,12 @@ import com.mycompany.portfolio_tracker.view.mainWindow;
  */
 public class AbstractController {
 
-	protected mainWindow gui; //view
-	private mainWindow.TableView ft; //Table View --> get model from there
+	protected MainWindow gui; //view
+	private MyTableView ft; //Table View --> get model from there
 	protected QuoteImpl quote;
 	
-	public mainWindow.TableView getCurrentSelectionTable(){
-		ft = (mainWindow.TableView)gui.getTabs().getSelectedComponent();
+	public MyTableView getCurrentSelectionTable(){
+		ft = (MyTableView)gui.getTabs().getSelectedComponent();
 		return ft;
 	}
 }

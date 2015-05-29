@@ -13,10 +13,11 @@ import javax.swing.JOptionPane;
 
 import com.mycompany.portfolio_tracker.io.Reader;
 import com.mycompany.portfolio_tracker.io.Writer;
+import com.mycompany.portfolio_tracker.model.Portfolio;
 import com.mycompany.portfolio_tracker.model.PortfolioImpl;
 import com.mycompany.portfolio_tracker.model.Stock;
 import com.mycompany.portfolio_tracker.model.StockImpl;
-import com.mycompany.portfolio_tracker.view.mainWindow;
+import com.mycompany.portfolio_tracker.view.MainWindow;
 
 /**
  * @author colin
@@ -24,22 +25,19 @@ import com.mycompany.portfolio_tracker.view.mainWindow;
  */
 public class MenuController extends AbstractController implements ActionListener{
 
-	private mainWindow mainGUI;
+	private MainWindow mainGUI;
 	private JFileChooser fc;
-	
-	
-	
 			
 	/**
 	 * Constructor
 	 */
-	public MenuController(mainWindow gui){
+	public MenuController(MainWindow gui){
 		mainGUI = gui;
 	}
 	
 	public void doSave(File file){
 		try{
-		PortfolioImpl p = getCurrentSelectionTable().getPortfolio();
+		Portfolio p = getCurrentSelectionTable().getPortfolio();
            try {
            Writer fileEditor = new Writer(file);
            String portfolioName = p.getPortfolioName();

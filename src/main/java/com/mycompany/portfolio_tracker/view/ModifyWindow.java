@@ -1,29 +1,14 @@
 package com.mycompany.portfolio_tracker.view;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * ModifiyWindow.java
- *
- * Created on 27-Nov-2008, 19:15:45
- */
-
 import java.awt.*;
 
 import javax.swing.*;
 
-import com.mycompany.portfolio_tracker.exceptions.MethodException;
-import com.mycompany.portfolio_tracker.exceptions.NoSuchTickerException;
-import com.mycompany.portfolio_tracker.exceptions.WebsiteDataException;
-import com.mycompany.portfolio_tracker.model.PortfolioImpl;
-import com.mycompany.portfolio_tracker.model.QuoteImpl;
-import com.mycompany.portfolio_tracker.model.Stock;
+import com.mycompany.portfolio_tracker.controller.ModifyController;
+import com.mycompany.portfolio_tracker.view.components.MyTableView;
 
 import java.awt.event.*;
-import java.io.IOException;
+
 
 /**
  *
@@ -39,25 +24,19 @@ public class ModifyWindow extends JFrame {
     private JLabel stockName;
     private JLabel currentValue;
     private JLabel totalValue;
-    private PortfolioImpl p;
-    private String tickerSymbol;
+    
     private JTextField jTextField1;
     private JButton ok;
     private JButton cancel;
-    private mainWindow gui;
-    private mainWindow.TableView ft;
-    private QuoteImpl quote;
+    
+    private ModifyController modifyController;
         
     /**
      * Constructor
      */
-    public ModifyWindow(mainWindow m, mainWindow.TableView ft, String ticker) {
+    public ModifyWindow(MainWindow gui, MyTableView ft, String ticker) {
         initComponents();
-        this.ft = ft;
-        p = ft.getPortfolio();
-        tickerSymbol = ticker;
-        gui = m;
-        quote = new QuoteImpl(true);
+        modifyController = new ModifyController(ft.getPortfolio(), gui, ticker, this);
     }
     
     /*
@@ -74,41 +53,7 @@ public class ModifyWindow extends JFrame {
         totalValue = new JLabel();
         
         ok = new JButton("OK");
-        ok.addActionListener(new ActionListener(){
-        	public void actionPerformed(ActionEvent evt){
-        		//update model
-        		Stock selectedStock = p.getStock(tickerSymbol);
-        		double volume = Double.parseDouble(getInputFromModify());
-        		try {
-        			try {
-						quote.setValues(tickerSymbol);
-					} 
-        			catch (IOException e) {
-        				gui.produceDialogs(e.getMessage());
-					}
-        			catch (WebsiteDataException e) {
-						gui.produceDialogs(e.getMessage());
-					}
-        			catch (NoSuchTickerException e) {
-        				gui.produceDialogs(e.getMessage());
-					}
-					if(volume <= quote.getVolume()){
-						selectedStock.setNumberOfShares((int)volume);
-					}
-					else{
-						gui.produceDialogs("Exceeded maximum number of available shares");
-					}
-				} 
-        		catch(MethodException e) {
-					gui.produceDialogs("Error, Please check and try again");
-				}
-        		
-        		p.calculateTotal();
-        		//update GUI
-        		gui.editRow(ft, tickerSymbol);
-        		dispose();
-        	}
-        });
+        ok.addActionListener(modifyController);
         
         cancel = new JButton("Cancel");
         cancel.addActionListener(new ActionListener(){
@@ -192,8 +137,7 @@ public class ModifyWindow extends JFrame {
     }
     
     public String getInputFromModify(){
-    	String input = jTextField1.getText();
-    	return input;
+    	return jTextField1.getText();
     }
     
     public void makeWindowVisible(){
