@@ -54,11 +54,11 @@ public class MenuController extends AbstractController implements ActionListener
            		fileEditor.close();
            }
            catch (IOException e) {
-        	   gui.produceDialogs("ERROR");
+        	   mainGUI.produceDialogs("ERROR");
            }
 		}
 		catch(Exception e){
-			gui.produceDialogs("ERROR");
+			mainGUI.produceDialogs("ERROR");
 		}
 	}
 	
@@ -71,7 +71,7 @@ public class MenuController extends AbstractController implements ActionListener
 			String st = JOptionPane.showInputDialog(null, "Enter PortFolio Name.");
 			 PortfolioImpl portfolio = new PortfolioImpl();
 			 portfolio.setPortfolioName(st);
-       		 gui.addTab(st, portfolio);
+			 mainGUI.addTab(st, portfolio);
 		}
 		else if(evt.getActionCommand().equals("Exit")){
 			System.exit(0);
@@ -103,7 +103,7 @@ public class MenuController extends AbstractController implements ActionListener
 	                	fileReader.close();
 	                }
 	          		catch(Exception e) {
-	          			gui.produceDialogs(e.getMessage());
+	          			mainGUI.produceDialogs(e.getMessage());
 	          		}
 	          }
 		}

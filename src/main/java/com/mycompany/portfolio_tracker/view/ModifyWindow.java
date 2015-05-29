@@ -33,10 +33,14 @@ public class ModifyWindow extends JFrame {
         
     /**
      * Constructor
+     * 
+     * @param gui
+     * @param ft
+     * @param ticker
      */
     public ModifyWindow(MainWindow gui, MyTableView ft, String ticker) {
-        initComponents();
         modifyController = new ModifyController(ft.getPortfolio(), gui, ticker, this);
+        initComponents();
     }
     
     /*

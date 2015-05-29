@@ -39,17 +39,23 @@ public class MainWindow extends JFrame implements Runnable {
 	private Portfolio portfolio;
 	private boolean start = true;
 	private DecimalFormat decimal;
-	private EventController listener = new EventController(this);
-	private MenuController menuListener = new MenuController(this);
+	private EventController eventController;
+	private MenuController menuController;
 
 	/**
 	 * Constructor
 	 */
 	public MainWindow() {
+		
+		eventController = new EventController(this);
+		menuController = new MenuController(this);
+		
 		makeMenuBar();
 		initComponents();
 		portfolio = new PortfolioImpl();
 		decimal = new DecimalFormat("0.00");
+		
+		
 	}
 
 	
@@ -77,31 +83,31 @@ public class MainWindow extends JFrame implements Runnable {
 
 		addButton = new JButton("Add");
 		addButton.setToolTipText("Add a stock to the portfolio");
-		addButton.addActionListener(listener);
+		addButton.addActionListener(eventController);
 		JPanel addPanel = new JPanel();
 		addPanel.add(addButton);
 
 		deleteButton = new JButton("Delete");
 		deleteButton.setToolTipText("Delete a stock from the portfolio");
-		deleteButton.addActionListener(listener);
+		deleteButton.addActionListener(eventController);
 		JPanel deletePanel = new JPanel();
 		deletePanel.add(deleteButton);
 
 		modifyButton = new JButton("Modify");
-		modifyButton.addActionListener(listener);
+		modifyButton.addActionListener(eventController);
 		modifyButton.setToolTipText("Edit a selected stock");
 		JPanel modifyPanel = new JPanel();
 		modifyPanel.add(modifyButton);
 
 		closeButton = new JButton("Close");
 		closeButton.setToolTipText("Closes a portfolio");
-		closeButton.addActionListener(listener);
+		closeButton.addActionListener(eventController);
 		JPanel closePanel = new JPanel();
 		closePanel.add(closeButton);
 
 		updateButton = new JButton("Update");
 		updateButton.setToolTipText("Updates the portfolio!");
-		updateButton.addActionListener(listener);
+		updateButton.addActionListener(eventController);
 		JPanel updatePanel = new JPanel();
 		updatePanel.add(updateButton);
 
@@ -162,13 +168,13 @@ public class MainWindow extends JFrame implements Runnable {
 		menuBar = new JMenuBar();
 		FileMenu = new JMenu("File");
 		newMenuItem = new JMenuItem("New");
-		newMenuItem.addActionListener(menuListener);
+		newMenuItem.addActionListener(menuController);
 		openMenuItem = new JMenuItem("Open");
-		openMenuItem.addActionListener(menuListener);
+		openMenuItem.addActionListener(menuController);
 		saveMenuItem = new JMenuItem("Save");
-		saveMenuItem.addActionListener(menuListener);
+		saveMenuItem.addActionListener(menuController);
 		exitMenuItem = new JMenuItem("Exit");
-		exitMenuItem.addActionListener(menuListener);
+		exitMenuItem.addActionListener(menuController);
 
 		// Adds to file menu
 		FileMenu.add(newMenuItem);
@@ -208,6 +214,11 @@ public class MainWindow extends JFrame implements Runnable {
 		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see java.lang.Runnable#run()
+	 */
+	@Override
 	public void run() {
 		while (start) {
 			try {
@@ -215,7 +226,7 @@ public class MainWindow extends JFrame implements Runnable {
 			} catch (Exception e) {
 
 			}
-			listener.constantUpdate();
+			eventController.constantUpdate();
 			repaint();
 
 		}

@@ -1,6 +1,5 @@
 package com.mycompany.portfolio_tracker.model;
 
-import java.util.Collection;
 import java.util.List;
 
 /**

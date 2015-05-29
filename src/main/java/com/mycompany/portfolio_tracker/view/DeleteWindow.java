@@ -35,8 +35,8 @@ public class DeleteWindow extends JFrame {
      * @param tickerSymbol
      */
     public DeleteWindow(MainWindow gui, MyTableView tableView, int rowNumber,Object tickerSymbol) {
-        initComponents();
-        deleteController = new DeleteController(gui, tableView, (String)tickerSymbol, rowNumber, this);
+    	deleteController = new DeleteController(gui, tableView, (String)tickerSymbol, rowNumber, this);
+    	initComponents();
     }
     
     /*

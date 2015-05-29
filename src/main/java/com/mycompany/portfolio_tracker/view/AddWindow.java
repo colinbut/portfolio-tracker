@@ -27,8 +27,8 @@ public class AddWindow extends JFrame {
      * Constructor
      */
     public AddWindow(MainWindow gui, Portfolio portfolio) {
-        initComponents();
-        addController = new AddController(gui, portfolio, this);
+    	addController = new AddController(gui, portfolio, this);
+    	initComponents();
     }
     
     /*
