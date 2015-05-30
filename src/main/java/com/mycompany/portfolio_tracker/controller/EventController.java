@@ -7,10 +7,8 @@ import com.mycompany.portfolio_tracker.exceptions.MethodException;
 import com.mycompany.portfolio_tracker.exceptions.NoSuchTickerException;
 import com.mycompany.portfolio_tracker.exceptions.WebsiteDataException;
 import com.mycompany.portfolio_tracker.model.Portfolio;
-import com.mycompany.portfolio_tracker.model.PortfolioImpl;
 import com.mycompany.portfolio_tracker.model.QuoteImpl;
 import com.mycompany.portfolio_tracker.model.Stock;
-import com.mycompany.portfolio_tracker.model.StockImpl;
 import com.mycompany.portfolio_tracker.view.AddWindow;
 import com.mycompany.portfolio_tracker.view.DeleteWindow;
 import com.mycompany.portfolio_tracker.view.ModifyWindow;
@@ -73,46 +71,7 @@ public class EventController extends AbstractController implements ActionListene
 		}
 		else if(evt.getActionCommand().equals("Update")){
 			//while we have iterated through all rows in table.
-//			if(gui.getTabs().getTabCount() != 0){
-//				 for(int index = 0; index < getCurrentSelectionTable().getTable().getRowCount(); index++){
-//		 		    	double newPrice = 0.0;
-//		 		    	double change = 0.0;
-//		 		    	Object[] rowData = readDataFromTable(index, getCurrentSelectionTable());
-//		 		    	String tickerSymbol = (String)rowData[0];
-//						
-//		 		    	try {
-//							quote.setValues(tickerSymbol);
-//							newPrice = quote.getLatest();
-//							change = quote.getChange();
-//				     	} 
-//						catch(IOException e) {
-//							gui.produceDialogs(e.getMessage());
-//						} 
-//						catch(WebsiteDataException e) {
-//							gui.produceDialogs(e.getMessage());
-//						} 
-//						catch(NoSuchTickerException e) {
-//							gui.produceDialogs(e.getMessage());
-//						}
-//						catch(MethodException e) {
-//							gui.produceDialogs(e.getMessage());
-//						}
-//		 		    	
-//		 		    	//UPDATE MODEL
-//						Portfolio portfolio = getCurrentSelectionTable().getPortfolio();
-//		 		    	String ticker = (String)getCurrentSelectionTable().getTable().getModel().getValueAt(index, 0);
-//		 		    	Stock stock = portfolio.getStock(ticker);
-//		 		    	stock.setChange(change);
-//		 		    	stock.setCurrentPrice(newPrice);
-//		 		    	portfolio.calculateTotal(); 	
-//		 		    	//UPDATE GUI
-//		 		    	gui.updateTab(index, getCurrentSelectionTable(), ticker);//CALLBACK to GUI to UPDATE
-//		 		      }
-			
-			//}
-			constantUpdate();
- 		   
-			
+			constantUpdate();	
 		}
 		else if(evt.getActionCommand().equals("Delete")){
 			if(gui.getTabs().getTabCount() != 0){

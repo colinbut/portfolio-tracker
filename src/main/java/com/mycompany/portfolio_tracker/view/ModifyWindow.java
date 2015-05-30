@@ -26,8 +26,8 @@ public class ModifyWindow extends JFrame {
     private JLabel totalValue;
     
     private JTextField jTextField1;
-    private JButton ok;
-    private JButton cancel;
+    private JButton okButton;
+    private JButton cancelButton;
     
     private ModifyController modifyController;
         
@@ -56,11 +56,16 @@ public class ModifyWindow extends JFrame {
         currentValue = new JLabel();
         totalValue = new JLabel();
         
-        ok = new JButton("OK");
-        ok.addActionListener(modifyController);
+        okButton = new JButton("OK");
+        okButton.addActionListener(modifyController);
         
-        cancel = new JButton("Cancel");
-        cancel.addActionListener(new ActionListener(){
+        cancelButton = new JButton("Cancel");
+        cancelButton.addActionListener(new ActionListener(){
+        	/*
+        	 * (non-Javadoc)
+        	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+        	 */
+        	@Override
         	public void actionPerformed(ActionEvent evt){
         		dispose();
         	}
@@ -102,8 +107,8 @@ public class ModifyWindow extends JFrame {
     	    	
     	JPanel confirm = new JPanel(new FlowLayout(FlowLayout.CENTER, 20,5));
     	confirm.setPreferredSize(new Dimension(2,50));
-    	confirm.add(ok);
-    	confirm.add(cancel);
+    	confirm.add(okButton);
+    	confirm.add(cancelButton);
     	
     	JPanel outside = new JPanel(new GridLayout(2,0));	
     	outside.add(topPanel);

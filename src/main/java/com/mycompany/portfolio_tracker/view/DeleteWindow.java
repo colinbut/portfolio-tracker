@@ -15,12 +15,12 @@ import java.awt.event.*;
 public class DeleteWindow extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
-	private JButton yes;
-    private JButton no;
+	private JButton yesButton;
+    private JButton noButton;
     private JLabel stockName_Label;
     private JLabel currentValue_Label;
     private JLabel currentHolding_Label;
-    private JLabel delete;
+    private JLabel deleteLabel;
     private JLabel testStock1_Label;
     private JLabel jLabel6;
     private JLabel jLabel7;
@@ -49,12 +49,17 @@ public class DeleteWindow extends JFrame {
         testStock1_Label = new JLabel();
         jLabel6 = new JLabel();
         jLabel7 = new JLabel();
-        delete = new JLabel("DELETE: ARE YOU SURE?");
-        yes = new JButton("Yes");
-        yes.addActionListener(deleteController);
+        deleteLabel = new JLabel("DELETE: ARE YOU SURE?");
+        yesButton = new JButton("Yes");
+        yesButton.addActionListener(deleteController);
         
-        no = new JButton("No");
-        no.addActionListener(new ActionListener(){
+        noButton = new JButton("No");
+        noButton.addActionListener(new ActionListener(){
+        	/*
+        	 * (non-Javadoc)
+        	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+        	 */
+        	@Override
         	public void actionPerformed(ActionEvent evt){
         		dispose();
         	}
@@ -63,7 +68,7 @@ public class DeleteWindow extends JFrame {
         setResizable(false);
         setPreferredSize(new Dimension(360,250));
         setLocation(300,300);
-        delete.setFont(new java.awt.Font("Tahoma", 1, 11)); 
+        deleteLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); 
         
         JPanel grid = new JPanel(new GridLayout(3,0,10,10));
         grid.add(stockName_Label);
@@ -74,11 +79,11 @@ public class DeleteWindow extends JFrame {
         grid.add(jLabel7);
         
         JPanel deletePanel = new JPanel(new FlowLayout(FlowLayout.CENTER,10,20));
-        deletePanel.add(delete);
+        deletePanel.add(deleteLabel);
         
         JPanel confirm = new JPanel(new FlowLayout(FlowLayout.CENTER, 40,0));
-        confirm.add(yes);
-        confirm.add(no);
+        confirm.add(yesButton);
+        confirm.add(noButton);
         
         JPanel bottom = new JPanel(new GridLayout(2,1,5,2));
         bottom.add(deletePanel);

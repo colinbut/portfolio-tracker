@@ -55,17 +55,6 @@ public class MainWindow extends JFrame implements Runnable {
 		portfolio = new PortfolioImpl();
 		decimal = new DecimalFormat("0.00");
 		
-		
-	}
-
-	
-
-	/**
-	 * 
-	 * @return
-	 */
-	public JTabbedPane getTabs() {
-		return jTabbedPane1;
 	}
 
 	/*
@@ -371,5 +360,12 @@ public class MainWindow extends JFrame implements Runnable {
 				.getTotalValue()));
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
+	public JTabbedPane getTabs() {
+		return jTabbedPane1;
+	}
 	
 }

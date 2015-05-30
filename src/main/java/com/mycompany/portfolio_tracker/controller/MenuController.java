@@ -5,14 +5,16 @@ package com.mycompany.portfolio_tracker.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
-import com.mycompany.portfolio_tracker.io.Reader;
-import com.mycompany.portfolio_tracker.io.Writer;
 import com.mycompany.portfolio_tracker.model.Portfolio;
 import com.mycompany.portfolio_tracker.model.PortfolioImpl;
 import com.mycompany.portfolio_tracker.model.Stock;
@@ -39,7 +41,7 @@ public class MenuController extends AbstractController implements ActionListener
 		try{
 		Portfolio p = getCurrentSelectionTable().getPortfolio();
            try {
-           Writer fileEditor = new Writer(file);
+           BufferedWriter fileEditor = new BufferedWriter(new FileWriter(file));
            String portfolioName = p.getPortfolioName();
            fileEditor.write(portfolioName);
            fileEditor.newLine();
@@ -83,14 +85,15 @@ public class MenuController extends AbstractController implements ActionListener
 	                File file = fc.getSelectedFile();
 	                PortfolioImpl p = new PortfolioImpl();
 	                try {
-	                	Reader fileReader = new Reader(file);
-	                	String str;
-	                	if((str = fileReader.read()) != null) {
+	                	BufferedReader fileReader = new BufferedReader(new FileReader(file));
+	                	
+	                	String str = null;
+	                	if((str = fileReader.readLine()) != null) {
 	                		p.setPortfolioName(str);
 	                	}
 	                	mainGUI.addTab(p.getPortfolioName(),p);
                 		
-	                	while((str = fileReader.read()) != null) {
+	                	while((str = fileReader.readLine()) != null) {
 	                		String [] temp = null;
 	                		temp = str.split(",");
 	                		quote.setValues(temp[0]);

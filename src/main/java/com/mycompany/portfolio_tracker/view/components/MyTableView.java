@@ -23,15 +23,26 @@ public class MyTableView extends JPanel {
 	private JPanel panel;
 	private JTable table;
 	private MyTableModel model1;
-	private Portfolio p2;
+	private Portfolio portfolio;
 	private JScrollPane scrollPane;
 	
+	/**
+	 * Constructor
+	 * 
+	 * @param portfolio
+	 */
 	public MyTableView(Portfolio portfolio) {
 		panel = new JPanel();
-		this.p2 = portfolio;
-		String[] columnNames = { "Ticker Symbol", "Stock Name",
-				"Number of Shares", "Price per Share", "Change",
-				"Value of Holding" };
+		this.portfolio = portfolio;
+		String[] columnNames = { 
+				"Ticker Symbol", 
+				"Stock Name",
+				"Number of Shares", 
+				"Price per Share", 
+				"Change",
+				"Value of Holding" 
+		};
+		
 		String[][] date = new String[0][6];
 
 		table = new JTable();
@@ -56,7 +67,7 @@ public class MyTableView extends JPanel {
 
 	
 	public Portfolio getPortfolio() {
-		return p2;
+		return portfolio;
 	}
 
 	/**

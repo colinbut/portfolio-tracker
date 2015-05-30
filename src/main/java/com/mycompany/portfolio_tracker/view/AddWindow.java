@@ -45,6 +45,11 @@ public class AddWindow extends JFrame {
         
         cancel = new JButton("Cancel");
         cancel.addActionListener(new ActionListener(){
+        	/*
+        	 * (non-Javadoc)
+        	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+        	 */
+        	@Override
         	public void actionPerformed(ActionEvent evt){
         		dispose();
         	}
