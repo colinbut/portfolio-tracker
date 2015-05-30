@@ -12,7 +12,7 @@ import com.mycompany.portfolio_tracker.exceptions.NoSuchTickerException;
 import com.mycompany.portfolio_tracker.exceptions.WebsiteDataException;
 import com.mycompany.portfolio_tracker.model.Portfolio;
 import com.mycompany.portfolio_tracker.model.Quote;
-import com.mycompany.portfolio_tracker.model.QuoteImpl;
+import com.mycompany.portfolio_tracker.model.Quote;
 import com.mycompany.portfolio_tracker.model.StockImpl;
 import com.mycompany.portfolio_tracker.view.AddWindow;
 import com.mycompany.portfolio_tracker.view.MainWindow;
@@ -36,7 +36,7 @@ public class AddController implements ActionListener {
 	 * @param addWindow
 	 */
 	public AddController(MainWindow gui, Portfolio portfolio, AddWindow addWindow) {
-		quote = new QuoteImpl();
+		quote = new Quote();
 		this.portfolio = portfolio;
 		this.gui = gui;
 		this.addWindow = addWindow;
@@ -54,12 +54,12 @@ public class AddController implements ActionListener {
 		double currentPrice = 0.0;
 
 		try {
-			((QuoteImpl)quote).setTickerSymbol(ticker); // set the Ticker to check if it's valid?
+			((Quote)quote).setTickerSymbol(ticker); // set the Ticker to check if it's valid?
 
 			currentPrice = quote.getLatest(); // If Success then get share
 			// price..
 			double change = quote.getChange();
-			String stockName = ((QuoteImpl)quote).getStockName();
+			String stockName = ((Quote)quote).getStockName();
 			
 			if(stockName == null) {
 				// handle null...
@@ -85,17 +85,19 @@ public class AddController implements ActionListener {
 				gui.produceDialogs(e.getMessage());
 			}
 
-		} catch (IOException e1) {
-			gui.produceDialogs(e1.getMessage());
-		}
-		catch (WebsiteDataException e1) {
-			gui.produceDialogs(e1.getMessage());
-		} catch (NoSuchTickerException e1) {
-			gui.produceDialogs(e1.getMessage() + "\n"
-					+ "Remember: For UK shares; add .l");
-		} catch (MethodException e1) {
-			gui.produceDialogs(e1.getMessage());
-		} catch (Exception e1) {
+		} 
+		//catch (IOException e1) {
+//			gui.produceDialogs(e1.getMessage());
+//		}
+//		catch (WebsiteDataException e1) {
+//			gui.produceDialogs(e1.getMessage());
+//		} catch (NoSuchTickerException e1) {
+//			gui.produceDialogs(e1.getMessage() + "\n"
+//					+ "Remember: For UK shares; add .l");
+//		} catch (MethodException e1) {
+//			gui.produceDialogs(e1.getMessage());
+//		} 
+		catch (Exception e1) {
 			gui.produceDialogs("Input Error\n" + "Please check input...\n"
 					+ "Remember: For UK shares; add .l");
 		}

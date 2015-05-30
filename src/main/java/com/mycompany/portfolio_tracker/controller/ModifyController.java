@@ -5,14 +5,11 @@ package com.mycompany.portfolio_tracker.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
 import com.mycompany.portfolio_tracker.exceptions.MethodException;
-import com.mycompany.portfolio_tracker.exceptions.NoSuchTickerException;
-import com.mycompany.portfolio_tracker.exceptions.WebsiteDataException;
 import com.mycompany.portfolio_tracker.model.Portfolio;
 import com.mycompany.portfolio_tracker.model.Quote;
-import com.mycompany.portfolio_tracker.model.QuoteImpl;
+import com.mycompany.portfolio_tracker.model.Quote;
 import com.mycompany.portfolio_tracker.model.Stock;
 import com.mycompany.portfolio_tracker.view.ModifyWindow;
 import com.mycompany.portfolio_tracker.view.MainWindow;
@@ -43,7 +40,7 @@ public class ModifyController implements ActionListener {
     	this.modifyWindow = modifyWindow;
     	this.tickerSymbol = ticker;
     	this.gui = gui;
-    	quote = new QuoteImpl();
+    	quote = new Quote();
     }
 	
 	/*
@@ -55,9 +52,9 @@ public class ModifyController implements ActionListener {
 		//update model
 		Stock selectedStock = portfolio.getStock(tickerSymbol);
 		double volume = Double.parseDouble(modifyWindow.getInputFromModify());
-		try {
+		//try {
 			
-			((QuoteImpl)quote).setTickerSymbol(tickerSymbol);
+			((Quote)quote).setTickerSymbol(tickerSymbol);
 			
 			if(volume <= quote.getVolume()){
 				selectedStock.setNumberOfShares((int)volume);
@@ -65,10 +62,10 @@ public class ModifyController implements ActionListener {
 			else{
 				gui.produceDialogs("Exceeded maximum number of available shares");
 			}
-		} 
-		catch(MethodException e) {
-			gui.produceDialogs("Error, Please check and try again");
-		}
+		//} 
+//		catch(MethodException e) {
+//			gui.produceDialogs("Error, Please check and try again");
+//		}
 		
 		portfolio.calculateTotal();
 		

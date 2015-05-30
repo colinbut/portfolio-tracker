@@ -8,7 +8,7 @@ import com.mycompany.portfolio_tracker.exceptions.NoSuchTickerException;
 import com.mycompany.portfolio_tracker.exceptions.WebsiteDataException;
 import com.mycompany.portfolio_tracker.model.Portfolio;
 import com.mycompany.portfolio_tracker.model.PortfolioImpl;
-import com.mycompany.portfolio_tracker.model.QuoteImpl;
+import com.mycompany.portfolio_tracker.model.Quote;
 import com.mycompany.portfolio_tracker.model.Stock;
 import com.mycompany.portfolio_tracker.view.AddWindow;
 import com.mycompany.portfolio_tracker.view.DeleteWindow;
@@ -21,15 +21,13 @@ import com.mycompany.portfolio_tracker.view.components.MyTableView;
  *
  */
 public class EventController extends AbstractController implements ActionListener{
-	
-	
 		
 	/**
 	 * Constructor
 	 */
 	public EventController(MainWindow gui){
 	    this.gui = gui;
-	    quote = new QuoteImpl();
+	    quote = new Quote();
 	}
 	
 	/*
@@ -127,23 +125,23 @@ public class EventController extends AbstractController implements ActionListene
 	 		    	Object[] rowData = readDataFromTable(index, getCurrentSelectionTable());
 	 		    	String tickerSymbol = (String)rowData[0];
 					
-	 		    	try {
+	 		    	//try {
 						quote.setTickerSymbol(tickerSymbol);
 						newPrice = quote.getLatest();
 						change = quote.getChange();
-					} 
-					catch(IOException e) {
-						gui.produceDialogs(e.getMessage());
-					} 
-					catch(WebsiteDataException e) {
-						gui.produceDialogs(e.getMessage());
-					} 
-					catch(NoSuchTickerException e) {
-						gui.produceDialogs(e.getMessage());
-					}
-					catch(MethodException e) {
-						gui.produceDialogs(e.getMessage());
-					}
+					//} 
+//					catch(IOException e) {
+//						gui.produceDialogs(e.getMessage());
+//					} 
+//					catch(WebsiteDataException e) {
+//						gui.produceDialogs(e.getMessage());
+//					} 
+//					catch(NoSuchTickerException e) {
+//						gui.produceDialogs(e.getMessage());
+//					}
+//					catch(MethodException e) {
+//						gui.produceDialogs(e.getMessage());
+//					}
 	 		    	
 	 		    	//UPDATE MODEL
 					Portfolio portfolio = getCurrentSelectionTable().getPortfolio();
