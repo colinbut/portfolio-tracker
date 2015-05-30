@@ -36,7 +36,7 @@ public class AddController implements ActionListener {
 	 * @param addWindow
 	 */
 	public AddController(MainWindow gui, Portfolio portfolio, AddWindow addWindow) {
-		quote = new QuoteImpl(true);
+		quote = new QuoteImpl();
 		this.portfolio = portfolio;
 		this.gui = gui;
 		this.addWindow = addWindow;
@@ -51,15 +51,19 @@ public class AddController implements ActionListener {
 		// get input - read from gui
 		String ticker = addWindow.getTicker();
 		String volumeStr = addWindow.getNumberOfShares();
-		double currentPrice = 0;
+		double currentPrice = 0.0;
 
 		try {
-			quote.setValues(ticker); // set the Ticker to check if it's valid?
+			((QuoteImpl)quote).setTickerSymbol(ticker); // set the Ticker to check if it's valid?
 
 			currentPrice = quote.getLatest(); // If Success then get share
 			// price..
 			double change = quote.getChange();
 			String stockName = ((QuoteImpl)quote).getStockName();
+			
+			if(stockName == null) {
+				// handle null...
+			}
 
 			try {
 				double volume = Double.parseDouble(volumeStr);
@@ -84,7 +88,6 @@ public class AddController implements ActionListener {
 		} catch (IOException e1) {
 			gui.produceDialogs(e1.getMessage());
 		}
-
 		catch (WebsiteDataException e1) {
 			gui.produceDialogs(e1.getMessage());
 		} catch (NoSuchTickerException e1) {

@@ -7,6 +7,7 @@ import com.mycompany.portfolio_tracker.exceptions.MethodException;
 import com.mycompany.portfolio_tracker.exceptions.NoSuchTickerException;
 import com.mycompany.portfolio_tracker.exceptions.WebsiteDataException;
 import com.mycompany.portfolio_tracker.model.Portfolio;
+import com.mycompany.portfolio_tracker.model.PortfolioImpl;
 import com.mycompany.portfolio_tracker.model.QuoteImpl;
 import com.mycompany.portfolio_tracker.model.Stock;
 import com.mycompany.portfolio_tracker.view.AddWindow;
@@ -28,7 +29,7 @@ public class EventController extends AbstractController implements ActionListene
 	 */
 	public EventController(MainWindow gui){
 	    this.gui = gui;
-	    quote = new QuoteImpl(true);
+	    quote = new QuoteImpl();
 	}
 	
 	/*
@@ -38,7 +39,7 @@ public class EventController extends AbstractController implements ActionListene
 	public void actionPerformed(ActionEvent evt){
 		if(evt.getActionCommand().equals("Close")){
 			if(gui.getTabs().getTabCount() != 0){
-				String portfolioName = getCurrentSelectionTable().getPortfolio().getPortfolioName();
+				String portfolioName = ((PortfolioImpl)getCurrentSelectionTable().getPortfolio()).getPortfolioName();
 				gui.produceCloseDialogs(portfolioName);
 			}
 			else{
@@ -127,7 +128,7 @@ public class EventController extends AbstractController implements ActionListene
 	 		    	String tickerSymbol = (String)rowData[0];
 					
 	 		    	try {
-						quote.setValues(tickerSymbol);
+						quote.setTickerSymbol(tickerSymbol);
 						newPrice = quote.getLatest();
 						change = quote.getChange();
 					} 

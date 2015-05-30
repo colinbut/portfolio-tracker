@@ -43,7 +43,7 @@ public class ModifyController implements ActionListener {
     	this.modifyWindow = modifyWindow;
     	this.tickerSymbol = ticker;
     	this.gui = gui;
-    	quote = new QuoteImpl(true);
+    	quote = new QuoteImpl();
     }
 	
 	/*
@@ -56,18 +56,9 @@ public class ModifyController implements ActionListener {
 		Stock selectedStock = portfolio.getStock(tickerSymbol);
 		double volume = Double.parseDouble(modifyWindow.getInputFromModify());
 		try {
-			try {
-				quote.setValues(tickerSymbol);
-			} 
-			catch (IOException e) {
-				gui.produceDialogs(e.getMessage());
-			}
-			catch (WebsiteDataException e) {
-				gui.produceDialogs(e.getMessage());
-			}
-			catch (NoSuchTickerException e) {
-				gui.produceDialogs(e.getMessage());
-			}
+			
+			((QuoteImpl)quote).setTickerSymbol(tickerSymbol);
+			
 			if(volume <= quote.getVolume()){
 				selectedStock.setNumberOfShares((int)volume);
 			}

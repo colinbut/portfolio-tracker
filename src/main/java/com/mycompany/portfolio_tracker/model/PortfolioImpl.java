@@ -7,9 +7,8 @@ import java.util.*;
  * @author colin
  *
  */
-public class PortfolioImpl implements Portfolio{
+public class PortfolioImpl extends AbstractBasePortfolio implements Portfolio{
 	
-	private String portfolioName;
 	private int totalValue;
 	private List<Stock> stocks;
 	
@@ -23,15 +22,11 @@ public class PortfolioImpl implements Portfolio{
 	}
 	
 	/*
-	 * Ads
-	 * @param stock is passed in
-	 */
-	/*
 	 * (non-Javadoc)
 	 * @see com.mycompany.portfolio_tracker.model.Portfolio#addStock(com.mycompany.portfolio_tracker.model.StockImpl)
 	 */
 	@Override
-	public void addStock(StockImpl stock){
+	public void addStock(Stock stock){
 		stocks.add(stock);
 		calculateTotal();
 	}
@@ -48,7 +43,6 @@ public class PortfolioImpl implements Portfolio{
 		}
 	}
 	
-	/* The total value of the portfolio is returned*/
 	/*
 	 * (non-Javadoc)
 	 * @see com.mycompany.portfolio_tracker.model.Portfolio#getTotalValue()
@@ -73,7 +67,6 @@ public class PortfolioImpl implements Portfolio{
 		}
 	}
 	
-	/* This will remove all of the stocks that have been added to the portfolio.*/
 	/*
 	 * (non-Javadoc)
 	 * @see com.mycompany.portfolio_tracker.model.Portfolio#removeAllStock()
@@ -107,26 +100,5 @@ public class PortfolioImpl implements Portfolio{
 	public List<Stock> getAllStocks(){
 		return stocks;
 	}
-	
-	/* This will return the name of the portfolio. */
-	/*
-	 * (non-Javadoc)
-	 * @see com.mycompany.portfolio_tracker.model.Portfolio#getPortfolioName()
-	 */
-	@Override
-	public String getPortfolioName() {
-		return portfolioName;
-	}
-	
-	/* This will set the name of the portfolio to whatever has been entered for the string value S. */
-	/*
-	 * (non-Javadoc)
-	 * @see com.mycompany.portfolio_tracker.model.Portfolio#setPortfolioName(java.lang.String)
-	 */
-	@Override
-	public void setPortfolioName(String s){
-		portfolioName = s;
-	}
-	
 	
 }

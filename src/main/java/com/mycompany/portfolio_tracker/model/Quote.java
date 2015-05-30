@@ -18,20 +18,6 @@ import com.mycompany.portfolio_tracker.exceptions.WebsiteDataException;
 public interface Quote {
 
 	/**
-	 * This method gets the web page containing the share price information and
-	 * sets up the data for retrieval
-	 * 
-	 * @throws IOException
-	 * @throws WebsiteDataException
-	 * @throws NoSuchTickerException
-	 * @throws MethodException
-	 * 
-	 * @requires: tickerSymbol != null || tickerSymbol != ""
-	 * 
-	 */
-	void setValues(String tickerSymbol) throws IOException, WebsiteDataException, NoSuchTickerException, MethodException;
-
-	/**
 	 * This method returns the value of the ticker
 	 * 
 	 * @effects String ticker: if ticker == null throws MethodException else

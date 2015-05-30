@@ -28,7 +28,7 @@ import com.mycompany.portfolio_tracker.view.MainWindow;
 public class MenuController extends AbstractController implements ActionListener{
 
 	private MainWindow mainGUI;
-	private JFileChooser fc;
+	private JFileChooser fileChooser;
 			
 	/**
 	 * Constructor
@@ -39,14 +39,14 @@ public class MenuController extends AbstractController implements ActionListener
 	
 	public void doSave(File file){
 		try{
-		Portfolio p = getCurrentSelectionTable().getPortfolio();
+		Portfolio portfolio = getCurrentSelectionTable().getPortfolio();
            try {
            BufferedWriter fileEditor = new BufferedWriter(new FileWriter(file));
-           String portfolioName = p.getPortfolioName();
+           String portfolioName = ((PortfolioImpl)portfolio).getPortfolioName();
            fileEditor.write(portfolioName);
            fileEditor.newLine();
-           for(int i = 0; i < p.getAllStocks().size(); i++){
-        	   Stock stock = p.getAllStocks().get(i);
+           for(int i = 0; i < portfolio.getAllStocks().size(); i++){
+        	   Stock stock = portfolio.getAllStocks().get(i);
         	   String ticker = stock.getTickerSymbol();
         	   String name = stock.getStockName();
         	   String numberOfShares = Integer.toString(stock.getNumberOfShares());
@@ -79,10 +79,10 @@ public class MenuController extends AbstractController implements ActionListener
 			System.exit(0);
 		}
 		else if(evt.getActionCommand().equals("Open")){
-			  fc = new JFileChooser();
-			  int returnVal = fc.showOpenDialog(mainGUI);
+			  fileChooser = new JFileChooser();
+			  int returnVal = fileChooser.showOpenDialog(mainGUI);
 	          if (returnVal == JFileChooser.APPROVE_OPTION) {
-	                File file = fc.getSelectedFile();
+	                File file = fileChooser.getSelectedFile();
 	                PortfolioImpl p = new PortfolioImpl();
 	                try {
 	                	BufferedReader fileReader = new BufferedReader(new FileReader(file));
@@ -96,7 +96,7 @@ public class MenuController extends AbstractController implements ActionListener
 	                	while((str = fileReader.readLine()) != null) {
 	                		String [] temp = null;
 	                		temp = str.split(",");
-	                		quote.setValues(temp[0]);
+	                		quote.setTickerSymbol(temp[0]);
 	                		StockImpl stock = new StockImpl(temp[0], Integer.parseInt(temp[2]), (quote.getLatest()), temp[1]);
 	                		stock.setChange(quote.getChange());
 	                		p.addStock(stock);
@@ -111,10 +111,10 @@ public class MenuController extends AbstractController implements ActionListener
 	          }
 		}
 		else if(evt.getActionCommand().equals("Save")){
-			fc = new JFileChooser();
-	    	int returnVal = fc.showSaveDialog(gui);
+			fileChooser = new JFileChooser();
+	    	int returnVal = fileChooser.showSaveDialog(gui);
 	        if (returnVal == JFileChooser.APPROVE_OPTION) {
-	           File file = fc.getSelectedFile();
+	           File file = fileChooser.getSelectedFile();
 	           if(file.exists() == true){
 	        	
 	        	   int n = JOptionPane.showConfirmDialog(gui,"Overrite File? ",

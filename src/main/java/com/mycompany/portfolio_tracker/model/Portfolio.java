@@ -13,7 +13,7 @@ public interface Portfolio {
 	 * 
 	 * @param stock
 	 */
-	void addStock(StockImpl stock);
+	void addStock(Stock stock);
 	
 	/**
 	 * 
@@ -21,6 +21,7 @@ public interface Portfolio {
 	void calculateTotal();
 	
 	/**
+	 * The total value of the portfolio is returned
 	 * 
 	 * @return
 	 */
@@ -33,7 +34,7 @@ public interface Portfolio {
 	void removeStock(String ticker);
 	
 	/**
-	 * 
+	 * This will remove all of the stocks that have been added to the portfolio.
 	 */
 	void removeAllStock();
 	
@@ -50,16 +51,6 @@ public interface Portfolio {
 	 * @return
 	 */
 	List<Stock> getAllStocks();
+
 	
-	/**
-	 * 
-	 * @return
-	 */
-	String getPortfolioName();
-	
-	/**
-	 * 
-	 * @param s
-	 */
-	void setPortfolioName(String s);
 }
