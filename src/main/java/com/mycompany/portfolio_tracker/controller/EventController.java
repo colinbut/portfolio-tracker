@@ -54,8 +54,11 @@ public class EventController extends AbstractController implements ActionListene
 			    AddWindow window = new AddWindow(gui, getCurrentSelectionTable().getPortfolio());
 			    //Pass event handling to child window..
         		window.makeWindowVisible();
-        		
         	}
+			else{
+				gui.produceDialogs("You haven't added a portfolio - please add a portfolio before"
+						+ " adding a stock");
+			}
 		}
 		else if(evt.getActionCommand().equals("Modify")){
 			if(gui.getTabs().getTabCount() != 0){

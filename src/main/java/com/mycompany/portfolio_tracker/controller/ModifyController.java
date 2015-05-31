@@ -9,7 +9,6 @@ import java.awt.event.ActionListener;
 import com.mycompany.portfolio_tracker.exceptions.MethodException;
 import com.mycompany.portfolio_tracker.model.Portfolio;
 import com.mycompany.portfolio_tracker.model.Quote;
-import com.mycompany.portfolio_tracker.model.Quote;
 import com.mycompany.portfolio_tracker.model.Stock;
 import com.mycompany.portfolio_tracker.view.ModifyWindow;
 import com.mycompany.portfolio_tracker.view.MainWindow;

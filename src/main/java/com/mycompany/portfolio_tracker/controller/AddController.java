@@ -12,7 +12,6 @@ import com.mycompany.portfolio_tracker.exceptions.NoSuchTickerException;
 import com.mycompany.portfolio_tracker.exceptions.WebsiteDataException;
 import com.mycompany.portfolio_tracker.model.Portfolio;
 import com.mycompany.portfolio_tracker.model.Quote;
-import com.mycompany.portfolio_tracker.model.Quote;
 import com.mycompany.portfolio_tracker.model.QuoteService;
 import com.mycompany.portfolio_tracker.model.QuoteServiceImpl;
 import com.mycompany.portfolio_tracker.model.StockImpl;

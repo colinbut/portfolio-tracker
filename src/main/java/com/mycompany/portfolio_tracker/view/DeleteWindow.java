@@ -102,7 +102,6 @@ public class DeleteWindow extends JFrame {
         getContentPane().add(north, BorderLayout.NORTH);
         getContentPane().add(west, BorderLayout.WEST);
         getContentPane().add(east, BorderLayout.EAST);
-       
         
         pack();
     }
