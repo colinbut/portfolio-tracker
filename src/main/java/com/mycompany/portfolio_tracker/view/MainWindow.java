@@ -140,8 +140,8 @@ public class MainWindow extends JFrame implements Runnable {
 		});
 		JPanel temp = new JPanel();
 		temp.add(side);
-		panel = new JPanel(new FlowLayout(FlowLayout.CENTER, 30, 10));
-		panel.add(jTabbedPane1);
+		panel = new JPanel(new BorderLayout());
+		panel.add(jTabbedPane1, BorderLayout.CENTER);
 		getContentPane().setLayout(new BorderLayout());
 		getContentPane().add(temp, BorderLayout.EAST);
 		getContentPane().add(panel, BorderLayout.CENTER);
@@ -341,8 +341,7 @@ public class MainWindow extends JFrame implements Runnable {
 	 */
 	public void editRow(MyTableView tableView, String tickerSymbol) {
 		int row = tableView.getTable().getSelectedRow(); // get the selected row
-		String shareNum = Integer.toString(tableView.getPortfolio()
-				.getStock(tickerSymbol).getNumberOfShares());
+		String shareNum = Integer.toString(tableView.getPortfolio().getStock(tickerSymbol).getNumberOfShares());
 		String change = decimal.format(tableView.getPortfolio()
 				.getStock(tickerSymbol).getChange());
 		String newHoldingValue = decimal.format(tableView.getPortfolio()

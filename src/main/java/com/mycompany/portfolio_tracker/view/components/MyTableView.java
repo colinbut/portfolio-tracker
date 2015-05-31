@@ -3,6 +3,7 @@
  */
 package com.mycompany.portfolio_tracker.view.components;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -54,7 +55,10 @@ public class MyTableView extends JPanel {
 		table.setForeground(Color.BLACK);
 		table.setGridColor(Color.BLUE);
 		scrollPane = new JScrollPane(table);
-		add(scrollPane);
+		
+		this.setLayout(new BorderLayout());
+		
+		add(scrollPane, BorderLayout.CENTER);
 	}
 
 	/**

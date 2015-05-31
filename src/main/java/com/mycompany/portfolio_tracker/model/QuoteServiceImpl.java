@@ -36,22 +36,23 @@ public class QuoteServiceImpl implements QuoteService {
 	public Quote getQuoteData(String tickerSymbol) throws IOException, WebsiteDataException, 
 											NoSuchTickerException, MethodException{
 		
-		List<String> _shareDataList;
+		List<String> shareDataList;
 		
 		try {
-			_shareDataList = QuoteRetrieverUtil.getValues(tickerSymbol, false);
+			
+			shareDataList = QuoteRetrieverUtil.getValues(tickerSymbol, false);
 			
 			QuoteBuilder quoteBuilder = new QuoteBuilder();
-			quoteBuilder.withStockName(ensureNotNull(_shareDataList.get(0)) ? _shareDataList.get(0) : null)
-						.withTicker(ensureNotNull(_shareDataList.get(1)) ? _shareDataList.get(1) : null)
-						.withDate(ensureNotNull(_shareDataList.get(3)) ? _shareDataList.get(3) : null)
-						.withDate(ensureNotNull(_shareDataList.get(4)) ? _shareDataList.get(4):null)
-						.withLatest(ensureNotNull(_shareDataList.get(2)) ? Double.valueOf(_shareDataList.get(2)):null)
-						.withChange(ensureNotNull(_shareDataList.get(5)) ? Double.valueOf(_shareDataList.get(5)):null)
-						.withOpen(ensureNotNull(_shareDataList.get(6)) ? Double.valueOf(_shareDataList.get(6)):null)
-						.withMaxRange(ensureNotNull(_shareDataList.get(7)) ? Double.valueOf(_shareDataList.get(7)):null)
-						.withMinRange(ensureNotNull(_shareDataList.get(8)) ? Double.valueOf(_shareDataList.get(8)):null)
-						.withVolume(ensureNotNull(_shareDataList.get(9)) ? Double.valueOf(_shareDataList.get(9)):null);
+			quoteBuilder.withStockName(ensureNotNull(shareDataList.get(0)) ? shareDataList.get(0) : null)
+						.withTicker(ensureNotNull(shareDataList.get(1)) ? shareDataList.get(1) : null)
+						.withDate(ensureNotNull(shareDataList.get(3)) ? shareDataList.get(3) : null)
+						.withDate(ensureNotNull(shareDataList.get(4)) ? shareDataList.get(4):null)
+						.withLatest(ensureNotNull(shareDataList.get(2)) ? Double.valueOf(shareDataList.get(2)):null)
+						.withChange(ensureNotNull(shareDataList.get(5)) ? Double.valueOf(shareDataList.get(5)):null)
+						.withOpen(ensureNotNull(shareDataList.get(6)) ? Double.valueOf(shareDataList.get(6)):null)
+						.withMaxRange(ensureNotNull(shareDataList.get(7)) ? Double.valueOf(shareDataList.get(7)):null)
+						.withMinRange(ensureNotNull(shareDataList.get(8)) ? Double.valueOf(shareDataList.get(8)):null)
+						.withVolume(ensureNotNull(shareDataList.get(9)) ? Double.valueOf(shareDataList.get(9)):null);
 			
 			return quoteBuilder.build();
 			

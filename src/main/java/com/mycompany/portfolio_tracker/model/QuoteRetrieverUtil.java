@@ -75,15 +75,9 @@ public class QuoteRetrieverUtil {
 			String str = null;
 
 			try {	
-				if(_useProxy){//University proxy settings
-					System.getProperties().put("proxySet", "true");
-
-					System.getProperties().put("proxyHost",
-						"www-cache2.strath.ac.uk");
-	
-					System.getProperties().put("proxyPort", "8080");
-				}//end if
-
+				if(_useProxy){
+					
+				}
 
 				// open web page, read the file, and buffer it for speed
 				webPage = new BufferedReader(
@@ -91,12 +85,12 @@ public class QuoteRetrieverUtil {
 									new URL(url + tickerSymbol + fileFormat).openStream()));
 
 			} catch (Exception e) {
-				throw new WebsiteDataException(url);
-			}// end try catch
+				e.printStackTrace();
+				//throw new WebsiteDataException(url);
+			}
 
 			// read the line from the file
 			str = webPage.readLine().toString();
-			System.out.println(str);
 			// strip the file of any punctuation
 			String s = removePunc(str);
 			

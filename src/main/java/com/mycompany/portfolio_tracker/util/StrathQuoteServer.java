@@ -55,15 +55,17 @@ public class StrathQuoteServer {
 
 		// open the web page for reading
 		try {
-			System.getProperties().put("proxySet", "true");
-			System.getProperties().put("proxyHost", "www-cache2.strath.ac.uk");
-			System.getProperties().put("proxyPort", "8080");
+			//System.getProperties().put("proxySet", "true");
+			//System.getProperties().put("proxyHost", "www-cache2.strath.ac.uk");
+			//System.getProperties().put("proxyPort", "8080");
 			urlWebPage = new URL(strURLStart + tickerSymbol);
+			System.out.println("Path" + urlWebPage.toString());
 			isr = new InputStreamReader(urlWebPage.openStream());
 
 			brWebPage = new BufferedReader(isr);
 		} catch (Exception e) {
-			throw new WebsiteDataException();
+			e.printStackTrace();
+			//throw new WebsiteDataException();
 		}
 
 		// find the line with the stock quote on it
@@ -86,12 +88,12 @@ public class StrathQuoteServer {
 		} catch (IOException e) {
 			throw new WebsiteDataException();
 		}
-
+		
 		// find the stock quote in the line
 		int a = strLine.indexOf("<b>");
 		int b = strLine.indexOf("</b>");
 		String strStockValue = strLine.substring(a + 3, b);
-
+		System.out.println("Col:" + strLine);
 		// close the web page stream
 		try {
 			brWebPage.close();

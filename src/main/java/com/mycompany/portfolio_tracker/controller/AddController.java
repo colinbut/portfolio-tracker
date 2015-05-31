@@ -13,6 +13,8 @@ import com.mycompany.portfolio_tracker.exceptions.WebsiteDataException;
 import com.mycompany.portfolio_tracker.model.Portfolio;
 import com.mycompany.portfolio_tracker.model.Quote;
 import com.mycompany.portfolio_tracker.model.Quote;
+import com.mycompany.portfolio_tracker.model.QuoteService;
+import com.mycompany.portfolio_tracker.model.QuoteServiceImpl;
 import com.mycompany.portfolio_tracker.model.StockImpl;
 import com.mycompany.portfolio_tracker.view.AddWindow;
 import com.mycompany.portfolio_tracker.view.MainWindow;
@@ -23,10 +25,10 @@ import com.mycompany.portfolio_tracker.view.MainWindow;
  */
 public class AddController implements ActionListener {
 	
-	private Quote quote; 
 	private MainWindow gui;
 	private Portfolio portfolio;
 	private AddWindow addWindow;
+	private QuoteService quoteService;
 	
 	/**
 	 * Constructor
@@ -36,10 +38,11 @@ public class AddController implements ActionListener {
 	 * @param addWindow
 	 */
 	public AddController(MainWindow gui, Portfolio portfolio, AddWindow addWindow) {
-		quote = new Quote();
+		
 		this.portfolio = portfolio;
 		this.gui = gui;
 		this.addWindow = addWindow;
+		quoteService = new QuoteServiceImpl();
 	}
 	
 	/*
@@ -54,6 +57,9 @@ public class AddController implements ActionListener {
 		double currentPrice = 0.0;
 
 		try {
+			
+			Quote quote = quoteService.getQuoteData(ticker);
+			
 			((Quote)quote).setTickerSymbol(ticker); // set the Ticker to check if it's valid?
 
 			currentPrice = quote.getLatest(); // If Success then get share
@@ -70,8 +76,7 @@ public class AddController implements ActionListener {
 				if (volume <= quote.getVolume()) {
 					// UPDATE MODEL
 					int shareNo = Integer.parseInt(addWindow.getNumberOfShares());
-					StockImpl stock = new StockImpl(ticker, shareNo,
-							currentPrice, stockName);// Make Stock object
+					StockImpl stock = new StockImpl(ticker, shareNo,currentPrice, stockName);// Make Stock object
 					stock.setChange(change);
 					portfolio.addStock(stock); // ADD to Portfolio (MODEL)
 					// Update GUI
