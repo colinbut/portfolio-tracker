@@ -11,7 +11,8 @@ import java.awt.event.*;
 
 
 /**
- *
+ * View class for the Modify modal
+ * 
  * @author Colin
  */
 public class ModifyWindow extends JFrame {
@@ -21,10 +22,9 @@ public class ModifyWindow extends JFrame {
     private JLabel currentValue_Label;
     private JLabel currentHolding_Label;
     private JLabel newHolding_Label;
-    private JLabel stockName;
-    private JLabel currentValue;
-    private JLabel totalValue;
-    
+    private JLabel stockNameLabel;
+    private JLabel currentValueLabel;
+    private JLabel totalValueLabel;
     private JTextField jTextField1;
     private JButton okButton;
     private JButton cancelButton;
@@ -52,9 +52,9 @@ public class ModifyWindow extends JFrame {
         currentHolding_Label = new JLabel("Current Holding: ");
         newHolding_Label = new JLabel("New Holding: ");
         jTextField1 = new JTextField();
-        stockName = new JLabel();
-        currentValue = new JLabel();
-        totalValue = new JLabel();
+        stockNameLabel = new JLabel();
+        currentValueLabel = new JLabel();
+        totalValueLabel = new JLabel();
         
         okButton = new JButton("OK");
         okButton.addActionListener(modifyController);
@@ -87,11 +87,11 @@ public class ModifyWindow extends JFrame {
     	    	
     	JPanel top = new JPanel(new GridLayout(0,2,10,10));
     	top.add(stockName_Label);
-    	top.add(stockName);
+    	top.add(stockNameLabel);
     	top.add(currentValue_Label);
-    	top.add(currentValue);
+    	top.add(currentValueLabel);
     	top.add(currentHolding_Label);
-    	top.add(totalValue);
+    	top.add(totalValueLabel);
     	
     	JPanel empty1 = new JPanel();
     	JPanel empty2 = new JPanel();
@@ -133,18 +133,35 @@ public class ModifyWindow extends JFrame {
     
     //---------------------------GUI UPDATE & CALLBACK methods------------------------
     
+    /**
+     * 
+     * @param sn
+     */
     public void setStockNameLabel(String sn){
-    	stockName.setText(sn);
+    	stockNameLabel.setText(sn);
     }
     
+    /**
+     * 
+     * @param cv
+     */
     public void setCurrentValueLabel(String cv){
-    	currentValue.setText(cv);
+    	currentValueLabel.setText(cv);
     }
     
+    /**
+     * 
+     * @param ch
+     * @param tv
+     */
     public void setTotalValueLabel(String ch, String tv){
-    	totalValue.setText(ch + " ( total value: " +  tv + ")");
+    	totalValueLabel.setText(ch + " ( total value: " +  tv + ")");
     }
     
+    /**
+     * 
+     * @return
+     */
     public String getInputFromModify(){
     	return jTextField1.getText();
     }

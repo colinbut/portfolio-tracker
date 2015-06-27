@@ -9,7 +9,8 @@ import java.awt.*;
 import java.awt.event.*;
 
 /**
- *
+ * View class for Add modal
+ * 
  * @author Colin
  */
 public class AddWindow extends JFrame {
@@ -19,12 +20,15 @@ public class AddWindow extends JFrame {
     private JLabel numberOfShares_Label;
     public JTextField tickerTextField;
     public JTextField numberOfSharesTextField;
-    private JButton ok;
-    private JButton cancel;
+    private JButton okButton;
+    private JButton cancelButton;
     private AddController addController;
     
     /**
      * Constructor
+     * 
+     * @param gui
+     * @param portfolio
      */
     public AddWindow(MainWindow gui, Portfolio portfolio) {
     	addController = new AddController(gui, portfolio, this);
@@ -40,11 +44,11 @@ public class AddWindow extends JFrame {
         tickerTextField = new JTextField();
         numberOfSharesTextField = new JTextField();
         
-        ok = new JButton("OK");
-        ok.addActionListener(addController);
+        okButton = new JButton("OK");
+        okButton.addActionListener(addController);
         
-        cancel = new JButton("Cancel");
-        cancel.addActionListener(new ActionListener(){
+        cancelButton = new JButton("Cancel");
+        cancelButton.addActionListener(new ActionListener(){
         	/*
         	 * (non-Javadoc)
         	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
@@ -67,8 +71,8 @@ public class AddWindow extends JFrame {
         input.add(numberOfSharesTextField);
                        
         JPanel confirm = new JPanel(new FlowLayout(FlowLayout.CENTER,10,10));
-        confirm.add(ok);
-        confirm.add(cancel);
+        confirm.add(okButton);
+        confirm.add(cancelButton);
         
         JPanel west = new JPanel();
         JPanel east = new JPanel();

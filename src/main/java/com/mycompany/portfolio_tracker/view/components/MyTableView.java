@@ -5,7 +5,6 @@ package com.mycompany.portfolio_tracker.view.components;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Container;
 import java.awt.Dimension;
 
 import javax.swing.JPanel;
@@ -15,13 +14,14 @@ import javax.swing.JTable;
 import com.mycompany.portfolio_tracker.model.Portfolio;
 
 /**
+ * Custom table view panel
+ * 
  * @author colin
  *
  */
 public class MyTableView extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JPanel panel;
 	private JTable table;
 	private MyTableModel model1;
 	private Portfolio portfolio;
@@ -33,7 +33,6 @@ public class MyTableView extends JPanel {
 	 * @param portfolio
 	 */
 	public MyTableView(Portfolio portfolio) {
-		panel = new JPanel();
 		this.portfolio = portfolio;
 		String[] columnNames = { 
 				"Ticker Symbol", 
@@ -65,11 +64,6 @@ public class MyTableView extends JPanel {
 	 * 
 	 * @return
 	 */
-	public Container getTableViewPanel() {
-		return panel;
-	}
-
-	
 	public Portfolio getPortfolio() {
 		return portfolio;
 	}

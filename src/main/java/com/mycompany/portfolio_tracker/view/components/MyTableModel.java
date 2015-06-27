@@ -6,6 +6,8 @@ package com.mycompany.portfolio_tracker.view.components;
 import javax.swing.table.DefaultTableModel;
 
 /**
+ * View table model
+ * 
  * @author colin
  *
  */

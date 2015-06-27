@@ -1,17 +1,17 @@
-/**
- * 
- */
 package com.mycompany.portfolio_tracker;
 
 import com.mycompany.portfolio_tracker.view.MainWindow;
 
 /**
+ * Application 
+ * 
  * @author colin
  *
  */
 public class Application {
 
 	/**
+	 * Main entry
 	 * 
 	 * @param args
 	 */

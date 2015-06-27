@@ -4,6 +4,8 @@
 package com.mycompany.portfolio_tracker.model;
 
 /**
+ * Abstract base class for Portfolio
+ * 
  * @author colin
  *
  */

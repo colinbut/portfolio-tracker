@@ -12,6 +12,8 @@ import com.mycompany.portfolio_tracker.view.MainWindow;
 import com.mycompany.portfolio_tracker.view.components.MyTableView;
 
 /**
+ * Controller for the Delete modal
+ * 
  * @author colin
  *
  */

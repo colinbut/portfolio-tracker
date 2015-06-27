@@ -37,7 +37,7 @@ import com.mycompany.portfolio_tracker.exceptions.WebsiteDataException;
  * 
  * @author colin
  */
-public class QuoteRetrieverUtil {
+public class QuoteRetriever {
 
 	private static boolean _useProxy;
 	

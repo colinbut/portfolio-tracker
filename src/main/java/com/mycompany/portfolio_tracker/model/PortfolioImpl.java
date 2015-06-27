@@ -7,7 +7,7 @@ import java.util.*;
  * @author colin
  *
  */
-public class PortfolioImpl extends AbstractBasePortfolio implements Portfolio{
+public class PortfolioImpl extends AbstractBasePortfolio {
 	
 	private int totalValue;
 	private List<Stock> stocks;

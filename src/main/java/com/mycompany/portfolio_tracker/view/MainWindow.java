@@ -15,6 +15,7 @@ import java.awt.*;
 import java.text.DecimalFormat;
 
 /**
+ * View class displaying the main window application
  * 
  * @author Colin
  */

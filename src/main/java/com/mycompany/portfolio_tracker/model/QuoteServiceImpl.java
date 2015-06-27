@@ -40,7 +40,7 @@ public class QuoteServiceImpl implements QuoteService {
 		
 		try {
 			
-			shareDataList = QuoteRetrieverUtil.getValues(tickerSymbol, false);
+			shareDataList = QuoteRetriever.getValues(tickerSymbol, false);
 			
 			QuoteBuilder quoteBuilder = new QuoteBuilder();
 			quoteBuilder.withStockName(ensureNotNull(shareDataList.get(0)) ? shareDataList.get(0) : null)

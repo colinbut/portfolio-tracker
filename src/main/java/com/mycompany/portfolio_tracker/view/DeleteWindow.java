@@ -9,7 +9,8 @@ import java.awt.*;
 import java.awt.event.*;
 
 /**
- *
+ * View class for the Delete modal
+ * 
  * @author Colin
  */
 public class DeleteWindow extends JFrame {
@@ -108,15 +109,18 @@ public class DeleteWindow extends JFrame {
     
     //--------------CALLBACK METHODS---------------------------------------------------
     
-    /*
+    /**
      * 
+     * @param cv
      */
     public void setLabel6(String cv){
     	jLabel6.setText(cv);
     }
     
-    /*
+    /**
      * 
+     * @param ch
+     * @param hv
      */
     public void setLabel7(String ch, String hv){
     	jLabel7.setText(ch + " ( total value " + hv + " )");
@@ -130,6 +134,9 @@ public class DeleteWindow extends JFrame {
     	 testStock1_Label.setText(sn);
     }
     
+    /**
+     * 
+     */
     public void makeWindowVisible(){
     	setVisible(true);
     }
