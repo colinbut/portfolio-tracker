@@ -53,7 +53,7 @@ public class ModifyController implements ActionListener {
 		double volume = Double.parseDouble(modifyWindow.getInputFromModify());
 		//try {
 			
-			((Quote)quote).setTickerSymbol(tickerSymbol);
+			quote.setTickerSymbol(tickerSymbol);
 			
 			if(volume <= quote.getVolume()){
 				selectedStock.setNumberOfShares((int)volume);

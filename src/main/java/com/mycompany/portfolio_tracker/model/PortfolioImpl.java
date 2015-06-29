@@ -16,7 +16,6 @@ public class PortfolioImpl extends AbstractBasePortfolio {
 	 * Constructor
 	 */
 	public PortfolioImpl() {
-		//this.portfolioName = portfolioName;
 		stocks = new ArrayList<Stock>();
 		totalValue = 0;
 	}
@@ -82,7 +81,7 @@ public class PortfolioImpl extends AbstractBasePortfolio {
 	 */
 	@Override
 	public Stock getStock(String ticker){
-        Stock temp = new StockImpl("", 0, 0.0, "");
+        Stock temp = new Stock("", 0, 0.0, "");
 		for(int i =0; i<stocks.size(); i++) {
 			if(stocks.get(i).getTickerSymbol().equals(ticker)) {
 				temp = stocks.get(i);

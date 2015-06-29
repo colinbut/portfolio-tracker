@@ -13,7 +13,7 @@ import com.mycompany.portfolio_tracker.exceptions.WebsiteDataException;
 import com.mycompany.portfolio_tracker.model.Portfolio;
 import com.mycompany.portfolio_tracker.model.Quote;
 import com.mycompany.portfolio_tracker.model.QuoteService;
-import com.mycompany.portfolio_tracker.model.StockImpl;
+import com.mycompany.portfolio_tracker.model.Stock;
 import com.mycompany.portfolio_tracker.view.AddWindow;
 import com.mycompany.portfolio_tracker.view.MainWindow;
 
@@ -75,12 +75,12 @@ public class AddController implements ActionListener {
 			try {
 				double volume = Double.parseDouble(volumeStr);
 				if (volume <= quote.getVolume()) {
-					// UPDATE MODEL
+					// update model
 					int shareNo = Integer.parseInt(addWindow.getNumberOfShares());
-					StockImpl stock = new StockImpl(ticker, shareNo,currentPrice, stockName);// Make Stock object
+					Stock stock = new Stock(ticker, shareNo,currentPrice, stockName);// Make Stock object
 					stock.setChange(change);
-					portfolio.addStock(stock); // ADD to Portfolio (MODEL)
-					// Update GUI
+					portfolio.addStock(stock); // add to portfolio
+					// update view
 					gui.AddRow(ticker);
 				} else {
 					gui.produceDialogs("Number of shares available exceeded limit");

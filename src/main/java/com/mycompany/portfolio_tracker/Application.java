@@ -23,7 +23,7 @@ public class Application {
 		
 		Thread t = new Thread(new MainWindow(quoteService));
 		t.start();
-		// new mainWindow();
+		
 	}
 	
 }

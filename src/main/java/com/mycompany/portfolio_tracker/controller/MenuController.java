@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
 import com.mycompany.portfolio_tracker.model.Portfolio;
 import com.mycompany.portfolio_tracker.model.PortfolioImpl;
 import com.mycompany.portfolio_tracker.model.Stock;
-import com.mycompany.portfolio_tracker.model.StockImpl;
+import com.mycompany.portfolio_tracker.model.Stock;
 import com.mycompany.portfolio_tracker.view.MainWindow;
 
 /**
@@ -97,7 +97,7 @@ public class MenuController extends AbstractController implements ActionListener
 	                		String [] temp = null;
 	                		temp = str.split(",");
 	                		quote.setTickerSymbol(temp[0]);
-	                		StockImpl stock = new StockImpl(temp[0], Integer.parseInt(temp[2]), (quote.getLatest()), temp[1]);
+	                		Stock stock = new Stock(temp[0], Integer.parseInt(temp[2]), (quote.getLatest()), temp[1]);
 	                		stock.setChange(quote.getChange());
 	                		p.addStock(stock);
 

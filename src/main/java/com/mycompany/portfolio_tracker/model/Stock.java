@@ -1,87 +1,158 @@
 package com.mycompany.portfolio_tracker.model;
 
 /**
+ * Stock class
+ * 
+ * POJO represents a stock
  * 
  * @author colin
  *
  */
-public interface Stock {
+public class Stock {
+	
+	private String stockName;
+	private String tickerSymbol;
+	private int numberOfShares;
+	private double holdingValue;
+	private double currentPrice;
+	private double change;
+	private double oldPrice;
 	
 	/**
+	 * Constructor
 	 * 
-	 * @param stockName
+	 * @param ticker
+	 * @param numberofShares
+	 * @param currentPrice
+	 * @param name
 	 */
-	void setStockName(String stockName);
+	public Stock(String ticker, int numberofShares, double currentPrice, String name) {
+		tickerSymbol = ticker;
+		this.numberOfShares = numberofShares;
+		this.currentPrice = currentPrice;
+		oldPrice = 0.0;
+		stockName = name;
+		change = 0.0;
+		calculateHoldingValue();
+	}
 	
-	/**
-	 * 
-	 * @param newTicker
+	/*This method sets the name of the stock*/
+	/*
+	 * (non-Javadoc)
+	 * @see com.mycompany.portfolio_tracker.model.Stock#setStockName(java.lang.String)
 	 */
-	void setTickerSymbol(String newTicker);
+	public void setStockName(String stockName){
+		this.stockName = stockName;
+	}
 	
-	/**
-	 * 
-	 * @return
+	/* This sets the ticker symbol to be the new ticker symbol*/
+	/*
+	 * (non-Javadoc)
+	 * @see com.mycompany.portfolio_tracker.model.Stock#setTickerSymbol(java.lang.String)
 	 */
-	double getHoldingValue();
+	public void setTickerSymbol(String newTicker){
+		tickerSymbol = newTicker;
+	}
 	
-	/**
-	 * 
-	 * @return
+	/* This will return the holding value*/
+	/*
+	 * (non-Javadoc)
+	 * @see com.mycompany.portfolio_tracker.model.Stock#getHoldingValue()
 	 */
-	String getStockName();
+	public double getHoldingValue(){
+		return holdingValue;
+	}
 	
-	/**
-	 * 
-	 * @return
+	/* The stock name is returned*/
+	/*
+	 * (non-Javadoc)
+	 * @see com.mycompany.portfolio_tracker.model.Stock#getStockName()
 	 */
-	String getTickerSymbol();
+	public String getStockName(){
+		return stockName;
+	}
 	
-	/**
-	 * 
-	 * @return
+	/* The ticker symbol is returned is returned*/
+	/*
+	 * (non-Javadoc)
+	 * @see com.mycompany.portfolio_tracker.model.Stock#getTickerSymbol()
 	 */
-	int getNumberOfShares();
+	public String getTickerSymbol(){
+		return tickerSymbol;
+	}
 	
-	/**
-	 * 
-	 * @param newAmount
+	/* The number of shares is returned*/
+	/*
+	 * (non-Javadoc)
+	 * @see com.mycompany.portfolio_tracker.model.Stock#getNumberOfShares()
 	 */
-	void setNumberOfShares(int newAmount);
+	public int getNumberOfShares(){
+		return numberOfShares;
+	}
 	
-	/**
-	 * 
+	/* This sets the number of shares to be the new amount and then the holding value is calculated.*/
+	/*
+	 * (non-Javadoc)
+	 * @see com.mycompany.portfolio_tracker.model.Stock#setNumberOfShares(int)
 	 */
-	void calculateHoldingValue();
+	public void setNumberOfShares(int newAmount) {
+		numberOfShares = newAmount;
+		calculateHoldingValue();
+	}
 	
-	/**
-	 * 
-	 * @param newPrice
+	/* This method calculates the holding value by multiplying the current price by the number of shares.*/
+	/*
+	 * (non-Javadoc)
+	 * @see com.mycompany.portfolio_tracker.model.Stock#calculateHoldingValue()
 	 */
-	void setCurrentPrice(double newPrice);
+	public void calculateHoldingValue() {
+		holdingValue = currentPrice * numberOfShares;
+	}
 	
-	/**
-	 * 
-	 * @return
+	/* The old price is set to the current price and then the current price is et to the new price. The holding value is then calculated.*/
+	/*
+	 * (non-Javadoc)
+	 * @see com.mycompany.portfolio_tracker.model.Stock#setCurrentPrice(double)
 	 */
-	double getCurrentPrice();
+	public void setCurrentPrice(double newPrice) {
+		oldPrice = currentPrice;
+		currentPrice = newPrice;
+		calculateHoldingValue();
+	}
 	
-	/**
-	 * 
-	 * @return
+	/* The current price of the stock is returned*/
+	/*
+	 * (non-Javadoc)
+	 * @see com.mycompany.portfolio_tracker.model.Stock#getCurrentPrice()
 	 */
-	double getOldPrice();
+	public double getCurrentPrice() {
+		return currentPrice;
+	}
 	
-	/**
-	 * 
-	 * @param change
+	/* This will return the old price of the stock.*/
+	/*
+	 * (non-Javadoc)
+	 * @see com.mycompany.portfolio_tracker.model.Stock#getOldPrice()
 	 */
-	void setChange(double change);
+	public double getOldPrice() {
+		return oldPrice;
+	}
 	
-	/**
-	 * 
-	 * @return
+	/*
+	 * (non-Javadoc)
+	 * @see com.mycompany.portfolio_tracker.model.Stock#setChange(double)
 	 */
-	double getChange();
-
+	public void setChange(double change){
+		this.change = change;
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see com.mycompany.portfolio_tracker.model.Stock#getChange()
+	 */
+	public double getChange(){
+		return change;
+	}
+	
 }
+
