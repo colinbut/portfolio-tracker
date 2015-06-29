@@ -4,6 +4,7 @@ import javax.swing.*;
 
 import com.mycompany.portfolio_tracker.controller.AddController;
 import com.mycompany.portfolio_tracker.model.Portfolio;
+import com.mycompany.portfolio_tracker.model.QuoteService;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -30,8 +31,8 @@ public class AddWindow extends JFrame {
      * @param gui
      * @param portfolio
      */
-    public AddWindow(MainWindow gui, Portfolio portfolio) {
-    	addController = new AddController(gui, portfolio, this);
+    public AddWindow(MainWindow gui, Portfolio portfolio, QuoteService quoteService) {
+    	addController = new AddController(gui, portfolio, this, quoteService);
     	initComponents();
     }
     

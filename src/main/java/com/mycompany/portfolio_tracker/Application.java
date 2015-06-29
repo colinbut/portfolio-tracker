@@ -1,5 +1,7 @@
 package com.mycompany.portfolio_tracker;
 
+import com.mycompany.portfolio_tracker.model.QuoteService;
+import com.mycompany.portfolio_tracker.model.QuoteServiceImpl;
 import com.mycompany.portfolio_tracker.view.MainWindow;
 
 /**
@@ -16,7 +18,10 @@ public class Application {
 	 * @param args
 	 */
 	public static void main(String args[]) {
-		Thread t = new Thread(new MainWindow());
+		
+		QuoteService quoteService = new QuoteServiceImpl();
+		
+		Thread t = new Thread(new MainWindow(quoteService));
 		t.start();
 		// new mainWindow();
 	}

@@ -10,7 +10,6 @@ import com.mycompany.portfolio_tracker.model.Portfolio;
 import com.mycompany.portfolio_tracker.model.PortfolioImpl;
 import com.mycompany.portfolio_tracker.model.Quote;
 import com.mycompany.portfolio_tracker.model.QuoteService;
-import com.mycompany.portfolio_tracker.model.QuoteServiceImpl;
 import com.mycompany.portfolio_tracker.model.Stock;
 import com.mycompany.portfolio_tracker.view.AddWindow;
 import com.mycompany.portfolio_tracker.view.DeleteWindow;
@@ -19,6 +18,10 @@ import com.mycompany.portfolio_tracker.view.MainWindow;
 import com.mycompany.portfolio_tracker.view.components.MyTableView;
 
 /**
+ * EventController class
+ * 
+ * Controller for the main window
+ * 
  * @author Colin
  *
  */
@@ -29,10 +32,10 @@ public class EventController extends AbstractController implements ActionListene
 	/**
 	 * Constructor
 	 */
-	public EventController(MainWindow gui){
+	public EventController(MainWindow gui, QuoteService quoteService){
 	    this.gui = gui;
 	    quote = new Quote();
-	    quoteService = new QuoteServiceImpl();
+	    this.quoteService = quoteService;
 	}
 	
 	/*
@@ -51,7 +54,7 @@ public class EventController extends AbstractController implements ActionListene
 		}
 		else if(evt.getActionCommand().equals("Add")){
 			if(gui.getTabs().getTabCount() != 0){
-			    AddWindow window = new AddWindow(gui, getCurrentSelectionTable().getPortfolio());
+			    AddWindow window = new AddWindow(gui, getCurrentSelectionTable().getPortfolio(), quoteService);
 			    //Pass event handling to child window..
         		window.makeWindowVisible();
         	}

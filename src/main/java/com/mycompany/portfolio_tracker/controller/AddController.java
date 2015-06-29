@@ -13,12 +13,15 @@ import com.mycompany.portfolio_tracker.exceptions.WebsiteDataException;
 import com.mycompany.portfolio_tracker.model.Portfolio;
 import com.mycompany.portfolio_tracker.model.Quote;
 import com.mycompany.portfolio_tracker.model.QuoteService;
-import com.mycompany.portfolio_tracker.model.QuoteServiceImpl;
 import com.mycompany.portfolio_tracker.model.StockImpl;
 import com.mycompany.portfolio_tracker.view.AddWindow;
 import com.mycompany.portfolio_tracker.view.MainWindow;
 
 /**
+ * AddController class
+ * 
+ * Controller for add modal
+ * 
  * @author colin
  *
  */
@@ -36,12 +39,11 @@ public class AddController implements ActionListener {
 	 * @param portfolio
 	 * @param addWindow
 	 */
-	public AddController(MainWindow gui, Portfolio portfolio, AddWindow addWindow) {
-		
+	public AddController(MainWindow gui, Portfolio portfolio, AddWindow addWindow, QuoteService quoteService) {
 		this.portfolio = portfolio;
 		this.gui = gui;
 		this.addWindow = addWindow;
-		quoteService = new QuoteServiceImpl();
+		this.quoteService = quoteService;
 	}
 	
 	/*
@@ -59,12 +61,12 @@ public class AddController implements ActionListener {
 			
 			Quote quote = quoteService.getQuoteData(ticker);
 			
-			((Quote)quote).setTickerSymbol(ticker); // set the Ticker to check if it's valid?
+			quote.setTickerSymbol(ticker); // set the Ticker to check if it's valid?
 
 			currentPrice = quote.getLatest(); // If Success then get share
 			// price..
 			double change = quote.getChange();
-			String stockName = ((Quote)quote).getStockName();
+			String stockName = quote.getStockName();
 			
 			if(stockName == null) {
 				// handle null...

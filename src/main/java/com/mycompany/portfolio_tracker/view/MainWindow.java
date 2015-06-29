@@ -8,6 +8,7 @@ import com.mycompany.portfolio_tracker.controller.EventController;
 import com.mycompany.portfolio_tracker.controller.MenuController;
 import com.mycompany.portfolio_tracker.model.Portfolio;
 import com.mycompany.portfolio_tracker.model.PortfolioImpl;
+import com.mycompany.portfolio_tracker.model.QuoteService;
 import com.mycompany.portfolio_tracker.model.Stock;
 import com.mycompany.portfolio_tracker.view.components.MyTableView;
 
@@ -46,9 +47,9 @@ public class MainWindow extends JFrame implements Runnable {
 	/**
 	 * Constructor
 	 */
-	public MainWindow() {
+	public MainWindow(QuoteService quoteService) {
 		
-		eventController = new EventController(this);
+		eventController = new EventController(this, quoteService);
 		menuController = new MenuController(this);
 		
 		makeMenuBar();
