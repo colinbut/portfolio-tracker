@@ -3,6 +3,7 @@ package com.mycompany.portfolio_tracker.model;
 import java.util.*;
 
 /**
+ * Implementation of the Portfolio interface
  * 
  * @author colin
  *
@@ -20,9 +21,8 @@ public class PortfolioImpl extends AbstractBasePortfolio {
 		totalValue = 0;
 	}
 	
-	/*
-	 * (non-Javadoc)
-	 * @see com.mycompany.portfolio_tracker.model.Portfolio#addStock(com.mycompany.portfolio_tracker.model.StockImpl)
+	/**
+	 * {@inheritDoc}
 	 */
 	@Override
 	public void addStock(Stock stock){
@@ -30,9 +30,8 @@ public class PortfolioImpl extends AbstractBasePortfolio {
 		calculateTotal();
 	}
 	
-	/*
-	 * (non-Javadoc)
-	 * @see IPortfolio#calculateTotal()
+	/**
+	 * {@inheritDoc}
 	 */
 	@Override
 	public void calculateTotal() {
@@ -42,18 +41,16 @@ public class PortfolioImpl extends AbstractBasePortfolio {
 		}
 	}
 	
-	/*
-	 * (non-Javadoc)
-	 * @see com.mycompany.portfolio_tracker.model.Portfolio#getTotalValue()
+	/**
+	 * {@inheritDoc}
 	 */
 	@Override
 	public int getTotalValue(){
 		return totalValue;
 	}
 	
-	/*
-	 * (non-Javadoc)
-	 * @see com.mycompany.portfolio_tracker.model.Portfolio#removeStock(java.lang.String)
+	/**
+	 * {@inheritDoc}
 	 */
 	@Override
 	public void removeStock(String ticker) {
@@ -66,18 +63,16 @@ public class PortfolioImpl extends AbstractBasePortfolio {
 		}
 	}
 	
-	/*
-	 * (non-Javadoc)
-	 * @see com.mycompany.portfolio_tracker.model.Portfolio#removeAllStock()
+	/**
+	 * {@inheritDoc}
 	 */
 	@Override
 	public void removeAllStock(){
 		stocks.removeAll(stocks);
 	}
 	
-	/*
-	 * (non-Javadoc)
-	 * @see com.mycompany.portfolio_tracker.model.Portfolio#getStock(java.lang.String)
+	/**
+	 * {@inheritDoc}
 	 */
 	@Override
 	public Stock getStock(String ticker){
@@ -91,9 +86,8 @@ public class PortfolioImpl extends AbstractBasePortfolio {
 		
 	}
 	
-	/*
-	 * (non-Javadoc)
-	 * @see com.mycompany.portfolio_tracker.model.Portfolio#getAllStocks()
+	/**
+	 * {@inheritDoc}
 	 */
 	@Override
 	public List<Stock> getAllStocks(){

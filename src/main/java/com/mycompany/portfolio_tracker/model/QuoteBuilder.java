@@ -4,10 +4,15 @@
 package com.mycompany.portfolio_tracker.model;
 
 /**
+ * QuoteBuilder class that represents the 'builder' to construct a
+ * Quote model object. 
+ * 
+ * This is the 'Builder' design pattern
+ * 
  * @author colin
  *
  */
-class QuoteBuilder {
+public class QuoteBuilder {
 	
 	private String stockName;
 	private String ticker;
@@ -101,7 +106,11 @@ class QuoteBuilder {
 		return this;
 	}
 	
-	
+	/**
+	 * Constructs the Quote object
+	 * 
+	 * @return the quote object
+	 */
 	public Quote build(){
 		
 		Quote quote = new Quote();
@@ -113,7 +122,6 @@ class QuoteBuilder {
 		quote.setMinRange(minRange);
 		quote.setOpen(open);
 		quote.setTicker(ticker);
-		//quote.setTickerSymbol(tickerSymbol);
 		quote.setTime(time);
 		quote.setVolume(volume);
 		

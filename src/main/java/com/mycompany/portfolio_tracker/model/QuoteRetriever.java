@@ -39,7 +39,7 @@ import com.mycompany.portfolio_tracker.exceptions.WebsiteDataException;
  */
 public class QuoteRetriever {
 
-	private static boolean _useProxy;
+	private static boolean useProxy;
 	
 	/**
 	 * This method gets the web page containing the share price information and
@@ -75,8 +75,8 @@ public class QuoteRetriever {
 			String str = null;
 
 			try {	
-				if(_useProxy){
-					
+				if(useProxy){
+					//TODO:
 				}
 
 				// open web page, read the file, and buffer it for speed
@@ -102,8 +102,9 @@ public class QuoteRetriever {
 
 			// catches a non-existent share.
 			// since the latest value on a non-existent will always be zero
-			if (_shareDataList.get(2).equalsIgnoreCase("0.00"))
+			if (_shareDataList.get(2).equalsIgnoreCase("0.00")) {
 				throw new NoSuchTickerException("No Such Ticker");
+			}
 		}
 		
 		return _shareDataList;

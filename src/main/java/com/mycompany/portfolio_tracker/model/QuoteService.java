@@ -10,12 +10,15 @@ import com.mycompany.portfolio_tracker.exceptions.NoSuchTickerException;
 import com.mycompany.portfolio_tracker.exceptions.WebsiteDataException;
 
 /**
+ * A service for querying data from a source
+ * 
  * @author colin
  *
  */
 public interface QuoteService {
 
 	/**
+	 * Gets the quote data
 	 * 
 	 * @param tickerSymbol
 	 * @throws IOException

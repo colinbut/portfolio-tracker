@@ -3,7 +3,7 @@ package com.mycompany.portfolio_tracker.model;
 import java.util.List;
 
 /**
- * 
+ * Representation of a 'Portfolio'
  * @author colin
  *
  */

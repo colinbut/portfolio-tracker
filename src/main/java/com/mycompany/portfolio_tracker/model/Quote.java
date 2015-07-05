@@ -1,7 +1,7 @@
 package com.mycompany.portfolio_tracker.model;
 
 /** 
- * 
+ * Quote class that represents a stock 'quote'
  *
  * @author Colin
  */
@@ -19,14 +19,6 @@ public class Quote {
 	private Double maxRange;
 	private Double minRange;
 	private Double volume;
-	
-	/**
-	 * Constructor
-	 */
-	public Quote() {
-		
-	}
-
 	
 	/**
 	 * @return the tickerSymbol

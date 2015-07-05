@@ -36,83 +36,65 @@ public class Stock {
 		calculateHoldingValue();
 	}
 	
-	/*This method sets the name of the stock*/
-	/*
-	 * (non-Javadoc)
-	 * @see com.mycompany.portfolio_tracker.model.Stock#setStockName(java.lang.String)
+	/** 
+	 * This method sets the name of the stock
 	 */
 	public void setStockName(String stockName){
 		this.stockName = stockName;
 	}
 	
-	/* This sets the ticker symbol to be the new ticker symbol*/
-	/*
-	 * (non-Javadoc)
-	 * @see com.mycompany.portfolio_tracker.model.Stock#setTickerSymbol(java.lang.String)
+	/** 
+	 * This sets the ticker symbol to be the new ticker symbol
 	 */
 	public void setTickerSymbol(String newTicker){
 		tickerSymbol = newTicker;
 	}
 	
-	/* This will return the holding value*/
-	/*
-	 * (non-Javadoc)
-	 * @see com.mycompany.portfolio_tracker.model.Stock#getHoldingValue()
+	/** 
+	 * This will return the holding value
 	 */
 	public double getHoldingValue(){
 		return holdingValue;
 	}
 	
-	/* The stock name is returned*/
-	/*
-	 * (non-Javadoc)
-	 * @see com.mycompany.portfolio_tracker.model.Stock#getStockName()
+	/** 
+	 * The stock name is returned
 	 */
 	public String getStockName(){
 		return stockName;
 	}
 	
-	/* The ticker symbol is returned is returned*/
-	/*
-	 * (non-Javadoc)
-	 * @see com.mycompany.portfolio_tracker.model.Stock#getTickerSymbol()
+	/** 
+	 * The ticker symbol is returned is returned
 	 */
 	public String getTickerSymbol(){
 		return tickerSymbol;
 	}
 	
-	/* The number of shares is returned*/
-	/*
-	 * (non-Javadoc)
-	 * @see com.mycompany.portfolio_tracker.model.Stock#getNumberOfShares()
+	/** 
+	 * The number of shares is returned
 	 */
 	public int getNumberOfShares(){
 		return numberOfShares;
 	}
 	
-	/* This sets the number of shares to be the new amount and then the holding value is calculated.*/
-	/*
-	 * (non-Javadoc)
-	 * @see com.mycompany.portfolio_tracker.model.Stock#setNumberOfShares(int)
+	/** 
+	 * This sets the number of shares to be the new amount and then the holding value is calculated.
 	 */
 	public void setNumberOfShares(int newAmount) {
 		numberOfShares = newAmount;
 		calculateHoldingValue();
 	}
 	
-	/* This method calculates the holding value by multiplying the current price by the number of shares.*/
-	/*
-	 * (non-Javadoc)
-	 * @see com.mycompany.portfolio_tracker.model.Stock#calculateHoldingValue()
+	/** 
+	 * This method calculates the holding value by multiplying the current price by the number of shares.
 	 */
 	public void calculateHoldingValue() {
 		holdingValue = currentPrice * numberOfShares;
 	}
 	
-	/* The old price is set to the current price and then the current price is et to the new price. The holding value is then calculated.*/
-	/*
-	 * (non-Javadoc)
-	 * @see com.mycompany.portfolio_tracker.model.Stock#setCurrentPrice(double)
+	/** 
+	 * The old price is set to the current price and then the current price is et to the new price. The holding value is then calculated.
 	 */
 	public void setCurrentPrice(double newPrice) {
 		oldPrice = currentPrice;
@@ -120,35 +102,34 @@ public class Stock {
 		calculateHoldingValue();
 	}
 	
-	/* The current price of the stock is returned*/
-	/*
-	 * (non-Javadoc)
-	 * @see com.mycompany.portfolio_tracker.model.Stock#getCurrentPrice()
+	/** 
+	 * The current price of the stock is returned
+	 * 
 	 */
 	public double getCurrentPrice() {
 		return currentPrice;
 	}
 	
-	/* This will return the old price of the stock.*/
-	/*
-	 * (non-Javadoc)
-	 * @see com.mycompany.portfolio_tracker.model.Stock#getOldPrice()
+	/** 
+	 * This will return the old price of the stock.
 	 */
 	public double getOldPrice() {
 		return oldPrice;
 	}
 	
-	/*
-	 * (non-Javadoc)
-	 * @see com.mycompany.portfolio_tracker.model.Stock#setChange(double)
+	/**
+	 * Sets the change in stock price
+	 * 
+	 * @param change
 	 */
 	public void setChange(double change){
 		this.change = change;
 	}
 	
-	/*
-	 * (non-Javadoc)
-	 * @see com.mycompany.portfolio_tracker.model.Stock#getChange()
+	/**
+	 * Gets the change in stock price
+	 * 
+	 * @return
 	 */
 	public double getChange(){
 		return change;

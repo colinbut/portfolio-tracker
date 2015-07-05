@@ -11,8 +11,9 @@ import com.mycompany.portfolio_tracker.exceptions.NoSuchTickerException;
 import com.mycompany.portfolio_tracker.exceptions.WebsiteDataException;
 
 /**
+ * Implementation of the QuoteService
+ * 
  * @author colin
- *
  */
 public class QuoteServiceImpl implements QuoteService {
 
@@ -21,21 +22,21 @@ public class QuoteServiceImpl implements QuoteService {
 	 * Move to utility class
 	 */
 	private boolean ensureNotNull(String str) throws MethodException{
-		//Objects.re
-		if(str == null)
+		
+		if(str == null){
 			throw new MethodException(str);
-		else
+		}
+		else {
 			return true;
+		}
 	}
 	
-	/*
-	 * (non-Javadoc)
-	 * @see com.mycompany.portfolio_tracker.model.QuoteService#getQuoteData(java.lang.String)
+	/**
+	 * {@inheritDoc}
 	 */
 	@Override
 	public Quote getQuoteData(String tickerSymbol) throws IOException, WebsiteDataException, 
 											NoSuchTickerException, MethodException{
-		
 		List<String> shareDataList;
 		
 		try {

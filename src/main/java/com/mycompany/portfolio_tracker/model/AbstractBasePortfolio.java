@@ -23,7 +23,8 @@ public abstract class AbstractBasePortfolio implements Portfolio {
 	}
 	
 	/**
-	 * This will set the name of the portfolio to whatever has been entered for the string value S.
+	 * This will set the name of the portfolio to whatever has been entered for 
+	 * the string value S.
 	 * 
 	 * @param s 
 	 */
