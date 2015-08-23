@@ -1,5 +1,7 @@
-/**
- * 
+/*
+ * |-------------------------------------------------
+ * | Copyright © 2008 Colin But. All rights reserved. 
+ * |-------------------------------------------------
  */
 package com.mycompany.portfolio_tracker.model;
 
@@ -59,7 +61,7 @@ public class QuoteRetriever {
 	public static List<String> getValues(String tickerSymbol, boolean useProxy) throws IOException,
 			WebsiteDataException, NoSuchTickerException, MethodException {
 
-		List<String> _shareDataList = new ArrayList<>();
+		List<String> _shareDataList = new ArrayList<String>();
 		
 		String url = "http://finance.yahoo.com/d/quotes.csv?s=";
 		String fileFormat = "&f=nsl1d1t1c1ohgv&e=.csv";

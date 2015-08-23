@@ -1,5 +1,7 @@
-/**
- * 
+/*
+ * |-------------------------------------------------
+ * | Copyright © 2008 Colin But. All rights reserved. 
+ * |-------------------------------------------------
  */
 package com.mycompany.portfolio_tracker.model;
 
@@ -57,9 +59,14 @@ public class QuoteServiceImpl implements QuoteService {
 			
 			return quoteBuilder.build();
 			
-		} catch (IOException | WebsiteDataException | NoSuchTickerException e) {
+		} catch (IOException e) {
+			throw e;
+		} catch (WebsiteDataException e) {
+			throw e;
+		} catch (NoSuchTickerException e) {
 			throw e;
 		}
+		
 		
 	}
 }

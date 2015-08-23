@@ -1,5 +1,7 @@
-/**
- * 
+/*
+ * |-------------------------------------------------
+ * | Copyright © 2008 Colin But. All rights reserved. 
+ * |-------------------------------------------------
  */
 package com.mycompany.portfolio_tracker.controller;
 
@@ -22,8 +24,9 @@ public class AbstractController {
 	protected Quote quote;
 	
 	/**
+	 * Returns the current selection table
 	 * 
-	 * @return
+	 * @return MyTableView
 	 */
 	public MyTableView getCurrentSelectionTable(){
 		ft = (MyTableView)gui.getTabs().getSelectedComponent();

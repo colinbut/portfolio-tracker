@@ -1,5 +1,7 @@
-/**
- * 
+/*
+ * |-------------------------------------------------
+ * | Copyright © 2008 Colin But. All rights reserved. 
+ * |-------------------------------------------------
  */
 package com.mycompany.portfolio_tracker.controller;
 
@@ -131,6 +133,6 @@ public class MenuController extends AbstractController implements ActionListener
 	       }
 		}
 		
-}
+	}
 
 }
